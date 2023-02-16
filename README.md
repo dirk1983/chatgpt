@@ -8,3 +8,8 @@ index.php前面的代码还可以实现区分内外网IP，内网直接访问，
 适合放在公司内网，让同事们一起体验chatGPT的强大功能，或者自己用。
 
 ![微信截图_20230216175637](https://user-images.githubusercontent.com/5563148/219332005-da550336-723d-4eef-9a67-ae16b0cca8ea.png)
+
+
+对chatgpt感兴趣的同学们欢迎加群讨论
+
+![微信截图_20230216182019](https://user-images.githubusercontent.com/5563148/219337838-35db2149-18c6-439c-827c-0889330a34f5.png)
