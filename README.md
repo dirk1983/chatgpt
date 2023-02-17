@@ -7,6 +7,9 @@ index.php前面的代码还可以实现区分内外网IP，内网直接访问，
 
 适合放在公司内网，让同事们一起体验chatGPT的强大功能，或者自己用。
 
+FAQ：
+部署调试时请注意两点，一个是要有curl扩展，一个是chat.txt文件要有写权限。
+
 ![微信截图_20230216175637](https://user-images.githubusercontent.com/5563148/219332005-da550336-723d-4eef-9a67-ae16b0cca8ea.png)
 
 
