@@ -56,7 +56,7 @@ if( isset( $complete->choices[0]->text ) ) {
 } elseif( isset( $complete->error->message ) ) {
     $text = "服务器返回错误信息：".$complete->error->message;
 } else {
-    $text = "抱歉，我不知道如何回答.";
+    $text = "服务器超时或返回异常消息。";
 }
 
 
