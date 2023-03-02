@@ -1,4 +1,5 @@
 <?php
+header( "Access-Control-Allow-Origin: *" );
 header( "Content-Type: application/json" );
 $context = json_decode( $_POST['context'] ?: "[]" ) ?: [];
 $prompt = "";
