@@ -9,7 +9,7 @@ if( !empty( $context ) ) {
        $prompt .= '{"role":"user","content":"' . str_replace("\n","\\n",$message[0]) . '"},{"role":"assistant","content":"' . str_replace("\n","\\n",$message[1]) . '"},';
     }
 }
-$prompt .= '{"role":"user","content":"' . $_POST['message'] . '"}';
+$prompt .= '{"role":"user","content":"' . addslashes($_POST['message']) . '"}';
 
 $ch = curl_init();
 $OPENAI_API_KEY = "sk-PXQ0A35RLCQaImgLujPST3blbkFJ2d7Kaa9aJjUqzvYwwkqd";
