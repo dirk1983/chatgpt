@@ -37,20 +37,33 @@ $(document).ready(function () {
         });
         return false;
     });
-    function articlewrapper(answer,str){
+    
+    function articlewrapper(question,answer,str){
+        $("#article-wrapper").append('<li class="article-title" id="q'+answer+'"><pre></pre></li>');
+        let str_ = ''
+        let i = 0
+        let timer = setInterval(()=>{
+            if(str_.length<question.length){
+                str_ += question[i++]
+                $("#q"+answer).children('pre').text(str_+'_')//打印时加光标
+            }else{
+                clearInterval(timer)
+                $("#q"+answer).children('pre').text(str_)//打印时加光标
+            }
+        },1)
         $("#article-wrapper").append('<li class="article-content" id="'+answer+'"><pre></pre></li>');
           if(str == null || str == ""){
               str="服务器响应超时，您可以更换词语再试试或过会儿再试。";
           }
-        let str_ = ''
-        let i = 0
-        let timer = setInterval(()=>{
-            if(str_.length<str.length){
-                str_ += str[i++]
-                $("#"+answer).children('pre').text(str_+'_')//打印时加光标
+        let str2_ = ''
+        let i2 = 0
+        let timer2 = setInterval(()=>{
+            if(str2_.length<str.length){
+                str2_ += str[i2++]
+                $("#"+answer).children('pre').text(str2_+'_')//打印时加光标
             }else{
-                clearInterval(timer)
-                $("#"+answer).children('pre').text(str_)//打印时加光标
+                clearInterval(timer2)
+                $("#"+answer).children('pre').text(str2_)//打印时加光标
             }
         },5)
     }
@@ -82,8 +95,7 @@ $(document).ready(function () {
                 $("#kw-target").val("");
                 layer.msg("处理成功！");
                 contextarray.push([prompt, results.raw_message]);
-                $("#article-wrapper").append('<li class="article-title">问：'+prompt+'</li>');
-                articlewrapper(randomString(16),"答："+results.raw_message);
+                articlewrapper("问："+prompt,randomString(16),"答："+results.raw_message);
             }
         });
     }
