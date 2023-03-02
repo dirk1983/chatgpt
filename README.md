@@ -1,5 +1,5 @@
 # chatgpt
-PHP版调用openai的api接口进行问答的Demo。
+PHP版调用OpenAI的API接口进行问答的Demo，代码已更新为调用最新的gpt-3.5-turbo模型。接口格式有些变化，代码已适配，实测服务器响应更快，效果更好。
 
 页面UI简洁，支持连续对话，支持保存查询日志。
 
@@ -9,15 +9,21 @@ index.php前面的代码还可以实现区分内外网IP，内网直接访问，
 
 适合放在公司内网，让同事们一起体验chatGPT的强大功能，或者自己用。
 
-![微信截图_20230216175637](https://user-images.githubusercontent.com/5563148/219332005-da550336-723d-4eef-9a67-ae16b0cca8ea.png)
+![微信截图_20230302172448](https://user-images.githubusercontent.com/5563148/222393529-f21d8db3-0079-4062-bd0f-677d5f40aadc.png)
+
 
 FAQ：
 部署调试时请注意两点，一个是要有curl扩展，一个是chat.txt文件要有写权限。
 
-严格地说，这个接口和官网的网页版chatgpt是不一样的，基于GPT3（官方chatgpt是GPT3.5），可以理解为稍弱版chatgpt。由于接口限制，问题和答案最多4096个字节，UTF-8编码一个汉字3个字节，所以只有1000多个汉字。由于接口是官方提供的，所以其实这个版本的稳定性是很好的。
+之前OpenAI官方API提供的最先进的模型是text-davinci-003，比官网的ChatGPT稍弱一些。最近OpenAI终于放出了gpt-3.5-turbo模型，理论上和官网的ChatGPT几乎没区别了。只是由于接口限制，问题和答案最多4096个tokens，实测1个汉字算2个tokens。
 
-github上也有一些大神提供了基于官方web版chatgpt的代码，原理就是把服务器模拟成一个客户端来和openai交互，用户所有请求通过服务器中转到openai。这个模式需要服务器IP是chatgpt支持的区域，并且稳定性差一些，问多了一段时间内可能会一直失败。好处是不限制问题和答案长度，不需要扣费。各位有兴趣可以了解一下：https://github.com/slippersheepig/chatgpt-html
+github上也有一些大神提供了基于官方web版chatgpt的代码（ https://github.com/acheong08/ChatGPT ）。原理就是把服务器模拟成一个客户端来和openai交互，用户所有请求通过服务器中转到openai。这个模式需要服务器IP是chatgpt支持的区域，并且稳定性差一些，问多了一段时间内可能会一直失败。好处是不限制问题和答案长度，不需要扣费。不过最新的模型放出来之后，这种方案就更加鸡肋了，好在之前没投入太多精力研究……
 
+OpenAI官网的模型和接口调用介绍：
+https://platform.openai.com/docs/models/moderation
+https://platform.openai.com/docs/api-reference/chat/create
+https://platform.openai.com/docs/guides/chat/introduction
+https://platform.openai.com/docs/api-reference/models/list
 
 对chatgpt感兴趣的同学们欢迎加群讨论
 
