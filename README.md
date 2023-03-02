@@ -20,10 +20,15 @@ FAQ：
 github上也有一些大神提供了基于官方web版chatgpt的代码（ https://github.com/acheong08/ChatGPT ）。原理就是把服务器模拟成一个客户端来和openai交互，用户所有请求通过服务器中转到openai。这个模式需要服务器IP是chatgpt支持的区域，并且稳定性差一些，问多了一段时间内可能会一直失败。好处是不限制问题和答案长度，不需要扣费。不过最新的模型放出来之后，这种方案就更加鸡肋了，好在之前没投入太多精力研究……
 
 OpenAI官网的模型和接口调用介绍：
+
 https://platform.openai.com/docs/models/moderation
+
 https://platform.openai.com/docs/api-reference/chat/create
+
 https://platform.openai.com/docs/guides/chat/introduction
+
 https://platform.openai.com/docs/api-reference/models/list
+
 
 对chatgpt感兴趣的同学们欢迎加群讨论
 
