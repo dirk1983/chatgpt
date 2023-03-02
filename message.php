@@ -6,7 +6,7 @@ $prompt = "";
 if( !empty( $context ) ) {
     $context = array_slice( $context, -5 );
     foreach( $context as $message ) {
-       $prompt .= '{"role":"user","content":"' . str_replace("\n","\\n",$message[0]) . '"},{"role":"assistant","content":"' . str_replace("\n","\\n",$message[1]) . '"},';
+       $prompt .= '{"role":"user","content":"' . addslashes(str_replace("\n","\\n",$message[0])) . '"},{"role":"assistant","content":"' . addslashes(str_replace("\n","\\n",$message[1])) . '"},';
     }
 }
 $prompt .= '{"role":"user","content":"' . addslashes($_POST['message']) . '"}';
