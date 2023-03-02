@@ -32,5 +32,6 @@ https://platform.openai.com/docs/api-reference/models/list
 
 对chatgpt感兴趣的同学们欢迎加群讨论
 
+![微信截图_20230302202854](https://user-images.githubusercontent.com/5563148/222429139-f71c6bd3-8145-4038-9cd5-8654c7cf77c1.png)
 
-![微信截图_20230222144412](https://user-images.githubusercontent.com/5563148/220543605-dc843c86-b84f-4425-a8b2-eb896fc130cf.png)
+
