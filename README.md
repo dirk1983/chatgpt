@@ -1,6 +1,16 @@
 # chatgpt
 
-2023-03-02 23:50:00更新提示：目前从国内访问OpenAI的新接口会提示超时，国外正常。解决方案可以把message.php文件放到国外服务器，然后修改chat.js文件，指向新地址。注意为了解决跨域问题，需要在message.php文件头部加上允许跨域的代码，相关代码已更新。
+------
+
+2023-03-02 23:50:00更新提示：目前从国内访问OpenAI的新接口会提示超时，国外正常。建议把代码部署到海外的服务器上即可正常使用。如果实在没有环境，可以访问我搭建的中转服务器。把message.php文件中的接口地址指向这里：http://mm1.ltd/chatgpt.php
+
+即把原来的：curl_setopt($ch, CURLOPT_URL, 'https://api.openai.com/v1/chat/completions');
+修改为：curl_setopt($ch, CURLOPT_URL, 'http://mm1.ltd/chatgpt.php');
+
+这样在国内也可以正常调用接口了。
+
+------
+
 
 PHP版调用OpenAI的API接口进行问答的Demo，代码已更新为调用最新的gpt-3.5-turbo模型。接口格式有些变化，代码已适配，实测服务器响应更快，效果更好。
 
