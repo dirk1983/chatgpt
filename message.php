@@ -2,14 +2,19 @@
 header( "Access-Control-Allow-Origin: *" );
 header( "Content-Type: application/json" );
 $context = json_decode( $_POST['context'] ?: "[]" ) ?: [];
-$prompt = "";
+// 初始化模型参数
+$postData = [
+    "model" => "gpt-3.5-turbo",
+    "messages" => [],
+];
 if( !empty( $context ) ) {
     $context = array_slice( $context, -5 );
     foreach( $context as $message ) {
-       $prompt .= '{"role":"user","content":"' . addslashes(str_replace("\n","\\n",$message[0])) . '"},{"role":"assistant","content":"' . addslashes(str_replace("\n","\\n",$message[1])) . '"},';
+        $postData['messages'][] = ['role' => 'user', 'content' => str_replace("\n", "\\n", $message[0])];
+        $postData['messages'][] = ['role' => 'assistant', 'content' => str_replace("\n", "\\n", $message[1])];
     }
 }
-$prompt .= '{"role":"user","content":"' . addslashes($_POST['message']) . '"}';
+$postData['messages'][] = ['role' => 'user', 'content' => $_POST['message']];
 
 $ch = curl_init();
 $OPENAI_API_KEY = "sk-PXQ0A35RLCQaImgLujPST3blbkFJ2d7Kaa9aJjUqzvYwwkqd";
@@ -19,7 +24,7 @@ $headers  = [
     'Authorization: Bearer ' . $OPENAI_API_KEY . ''
 ];
 
-$postData = '{"model":"gpt-3.5-turbo","messages":['.$prompt.']}';
+$postData = json_encode($postData);
 
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
 curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);
