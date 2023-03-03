@@ -67,7 +67,7 @@ $type = "个人";
 						<div id="fixed-block">
 							<div class="precast-block" id="kw-target-box" data-flex="main:left cross:center">
 								<div id="target-box" class="box">
-									<input type="text" name="kw-target" placeholder="请点此提问" id="kw-target" autofocus>
+									<textarea   style="color:white;background:#343541" name="kw-target" placeholder="请点此提问" id="kw-target" autofocus></textarea>
 								</div>
 								<div class="right-btn layout-bar">
 									<p class="btn ai-btn bright-btn" id="ai-btn"  data-flex="main:center cross:center"><i class="iconfont icon-wuguan"></i>发送</p>
