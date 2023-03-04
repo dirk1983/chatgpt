@@ -1,8 +1,15 @@
 # chatgpt
+------
+
+**2023-03-04 19:50发布：根据Issues里面某位网友的提示，已初步完成采用Stream流模式通信的Demo，一边生成一边输出，响应速度超过官网。前端采用JS的EventSource，后端使用PHP开发。新版本还将Markdown格式文本进行了排版，对代码进行了着色处理。想尝尝鲜的朋友可以访问下面这个网站试用，发现bug的话欢迎进群反馈。**
+
+*测试网址：http://mm1.ltd *
+
+![微信图片_20230304200105](https://user-images.githubusercontent.com/5563148/222899925-c8cbdd67-2560-4853-af44-cf45fe7725d9.png)
 
 ------
 
-**2023-03-02 23:50:00更新提示：目前从国内访问OpenAI的新接口会提示超时，国外正常。建议把代码部署到海外的服务器上即可正常使用。如果实在没有环境，可以访问我搭建的中转服务器。把message.php文件中的接口地址指向这里：http://mm1.ltd/chatgpt.php （使用https方式访问也可以）**
+**2023-03-02 23:50发布：目前从国内访问OpenAI的新接口会提示超时，国外正常。建议把代码部署到海外的服务器上即可正常使用。如果实在没有环境，可以访问我搭建的中转服务器。把message.php文件中的接口地址指向这里：http://mm1.ltd/chatgpt.php （使用https方式访问也可以）**
 
 *即把原来的：curl_setopt($ch, CURLOPT_URL, 'https://api.openai.com/v1/chat/completions');*
 
@@ -44,7 +51,7 @@ https://platform.openai.com/docs/guides/chat/introduction
 https://platform.openai.com/docs/api-reference/models/list
 
 
-对chatgpt感兴趣的同学们欢迎加群讨论
+对chatgpt感兴趣的同学们欢迎加群讨论。群里有很多大神，有问题可以互相帮助。如果需要在本项目基础上进行二次开发或者其他商务合作，可以加我微信沟通。
 
 ![微信截图_20230302202854](https://user-images.githubusercontent.com/5563148/222429139-f71c6bd3-8145-4038-9cd5-8654c7cf77c1.png)
 
