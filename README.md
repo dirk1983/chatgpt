@@ -3,7 +3,7 @@
 
 **2023-03-04 19:50发布：根据Issues里面某位网友的提示，已初步完成采用Stream流模式通信的Demo，一边生成一边输出，响应速度超过官网。前端采用JS的EventSource，后端使用PHP开发。新版本还将Markdown格式文本进行了排版，对代码进行了着色处理。想尝尝鲜的朋友可以访问下面这个网站试用，发现bug的话欢迎进群反馈。**
 
-*测试网址：http://mm1.ltd *
+*测试网址：http://mm1.ltd*
 
 ![微信图片_20230304200105](https://user-images.githubusercontent.com/5563148/222899925-c8cbdd67-2560-4853-af44-cf45fe7725d9.png)
 
