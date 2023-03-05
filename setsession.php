@@ -17,7 +17,7 @@ $postData['messages'][] = ['role' => 'user', 'content' => $_POST['message']];
 $postData = json_encode($postData);
 session_start();
 $_SESSION['data'] = $postData;
-if (isset($POST['key'])) {
+if (isset($_POST['key'])) {
     $_SESSION['key'] = $_POST['key'];
 }
 echo '{"success":true}';
