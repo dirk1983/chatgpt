@@ -142,6 +142,7 @@ $(document).ready(function () {
             data: {
                 message: prompt,
                 context: (!($("#keep").length) || ($("#keep").prop("checked"))) ? JSON.stringify(contextarray) : '[]',
+                key: ($("#key").length) ? ($("#key").val()) : '',
             },
             dataType: "json",
             success: function (results) {
