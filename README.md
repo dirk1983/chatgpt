@@ -40,4 +40,6 @@ https://platform.openai.com/docs/api-reference/models/list
 
 ![微信截图_20230302202854](https://user-images.githubusercontent.com/5563148/222429139-f71c6bd3-8145-4038-9cd5-8654c7cf77c1.png)
 
+有热心网友建议我放个打赏码，各位如果真的想表达感谢，小额即可。我更希望我的代码可以抛砖引玉，助力各位找到新爆点，一年盈利，两年融资，三年上市，走上人生巅峰！
 
+![打赏码](https://user-images.githubusercontent.com/5563148/222967626-bba275c7-798d-4043-a782-fd644a2d8058.jpg)
