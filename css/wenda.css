@@ -18,9 +18,18 @@
     min-height:200px;
 }
 #article-wrapper {
-    min-height:calc(100vh - 320px);
+    height:calc(100vh - 280px);
+    overflow-y:auto;
     border:1px solid;
     border-radius:var(--zhuluan-primary-border-radius);
+}
+#article-wrapper::-webkit-scrollbar {
+    width: 10px;
+}
+
+#article-wrapper::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: lightgrey;
 }
 .article-box {
     min-height:calc(100vh - 50px) !important;
@@ -124,6 +133,7 @@ li.article-content {
     padding:14px;
     color:#fff;
     font-size:15px;
+    line-height:30px;
 }
 .article .creating-loading {
     display:none;

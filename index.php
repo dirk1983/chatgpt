@@ -23,14 +23,17 @@ $type = "个人";
 //  }
 ?>
 <html lang="zh-CN">
+
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-	<title>ChatGPT<?=$type?>专用版</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>ChatGPT<?= $type ?>专用版</title>
 	<link rel="stylesheet" href="css/common.css?v1.1">
 	<link rel="stylesheet" href="css/wenda.css?v1.1">
+	<link rel="stylesheet" href="css/hightlight.css">
 </head>
+
 <body>
 	<div class="layout-wrap">
 		<header class="layout-header">
@@ -39,7 +42,7 @@ $type = "个人";
 					<h2 class="logo"><a class="links" id="clean" title="清空对话信息"><span class="logo-title">清空对话信息</span></a></h2>
 				</div>
 				<div class="header-logo">
-					<h2 class="logo"><a class="links" id="showlog" title="查看他人对话"><span class="logo-title">查看他人对话</span></a></h2>
+					<h2 class="logo"><a class="links" href="https://github.com/dirk1983/chatgpt"><span class="logo-title">获取源码</span></a></h2>
 				</div>
 			</div>
 		</header>
@@ -48,16 +51,21 @@ $type = "个人";
 				<article class="article" id="article">
 					<div class="article-box">
 						<div style="text-align: center;color:#9ca2a8">
-							ChatGPT是一个超强的AI，它会创作、写论文、答辩、编程等。请勿查询违法信息，服务器会保留查询记录。<br/>
-							账户总查询次数有限，请不要过于浪费查询机会，仅限内部人员测试使用。<br/>
+							采用最新的gpt-3.5-turbo模型，stream模式，秒回
 						</div>
 						<div class="precast-block" data-flex="main:left">
 							<div class="input-group">
 								<span style="text-align: center;color:#9ca2a8">&nbsp;&nbsp;连续对话：</span>
-								<input type="checkbox" id="keep"  checked style="min-width:220px;">
+								<input type="checkbox" id="keep" checked style="min-width:220px;">
 								<label for="keep"></label>
-								<span style="text-align: center;color:#9ca2a8">&nbsp;&nbsp;&nbsp;&nbsp;默认开启，ChatGPT将以下面的对话信息作为上下文回答您的提问（含上下文问题最多3072个字符，AI回答不超过1024个字符）。</span>
+								<span style="text-align: center;color:#9ca2a8">&nbsp;&nbsp;&nbsp;&nbsp;默认开启</span>
 							</div>
+							<!--
+							<div class="input-group">
+								<span style="text-align: center;color:#9ca2a8">&nbsp;&nbsp;请输入您的API-KEY&nbsp;&nbsp;</span>
+								<input type="password" id="key" style="border:1px solid grey;display:block;max-width:270px;width:calc(100% - 160px);" onload="this.focus();">
+							</div>
+							-->
 						</div>
 						<ul id="article-wrapper">
 						</ul>
@@ -70,7 +78,7 @@ $type = "个人";
 									<input type="text" name="kw-target" placeholder="请点此提问" id="kw-target" autofocus>
 								</div>
 								<div class="right-btn layout-bar">
-									<p class="btn ai-btn bright-btn" id="ai-btn"  data-flex="main:center cross:center"><i class="iconfont icon-wuguan"></i>发送</p>
+									<p class="btn ai-btn bright-btn" id="ai-btn" data-flex="main:center cross:center"><i class="iconfont icon-wuguan"></i>发送</p>
 								</div>
 							</div>
 						</div>
@@ -80,10 +88,11 @@ $type = "个人";
 		</div>
 	</div>
 	<script src="js/jquery.min.js"></script>
-  <script src="js/jquery.cookie.min.js"></script>
-  <script src="js/layer.min.js" type="application/javascript"></script>
+	<script src="js/jquery.cookie.min.js"></script>
+	<script src="js/layer.min.js" type="application/javascript"></script>
 	<script src="js/chat.js?v2.8"></script>
+	<script src="js/highlight.min.js"></script>
+	<script src="js/showdown.min.js"></script>
 </body>
 
 </html>
-

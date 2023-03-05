@@ -1,9 +1,18 @@
-
-/*
-//定时器*/
 var contextarray = [];
+
+function getCookie(name) {
+    var cookies = document.cookie.split(';');
+    for (var i = 0; i < cookies.length; i++) {
+        var cookie = cookies[i].trim();
+        if (cookie.indexOf(name + '=') === 0) {
+            return cookie.substring(name.length + 1, cookie.length);
+        }
+    }
+    return null;
+}
+
 $(document).ready(function () {
-    
+
     $("#kw-target").on('keydown', function (event) {
         if (event.keyCode == 13) {
             send_post();
@@ -21,56 +30,19 @@ $(document).ready(function () {
         return false;
     });
     $("#showlog").click(function () {
-    		let btnArry = ['已阅'];
-        layer.open({<!-- -->
-            type: 1
-            ,title: '全部对话日志'
-            ,area: ['80%', '80%']
-            ,shade: 0.5
-            ,scrollbar: true
-            ,offset: [
-                ($(window).height() * 0.1)
-                ,($(window).width() * 0.1)
-            ]
-            ,content: '<iframe src="chat.txt?' + new Date().getTime()+ '" style="width: 100%; height: 100%;"></iframe>'
-            ,btn: btnArry
-        });
+        let btnArry = ['已阅'];
+        layer.open({ type: 1, title: '全部对话日志', area: ['80%', '80%'], shade: 0.5, scrollbar: true, offset: [($(window).height() * 0.1), ($(window).width() * 0.1)], content: '<iframe src="chat.txt?' + new Date().getTime() + '" style="width: 100%; height: 100%;"></iframe>', btn: btnArry });
         return false;
     });
-    
-    function articlewrapper(question,answer,str){
-        $("#article-wrapper").append('<li class="article-title" id="q'+answer+'"><pre></pre></li>');
-        let str_ = ''
-        let i = 0
-        let timer = setInterval(()=>{
-            if(str_.length<question.length){
-                str_ += question[i++]
-                $("#q"+answer).children('pre').text(str_+'_')//打印时加光标
-            }else{
-                clearInterval(timer)
-                $("#q"+answer).children('pre').text(str_)//打印时加光标
-            }
-        },1)
-        $("#article-wrapper").append('<li class="article-content" id="'+answer+'"><pre></pre></li>');
-          if(str == null || str == ""){
-              str="服务器响应超时，您可以更换词语再试试或过会儿再试。";
-          }
-        let str2_ = ''
-        let i2 = 0
-        let timer2 = setInterval(()=>{
-            if(str2_.length<str.length){
-                str2_ += str[i2++]
-                $("#"+answer).children('pre').text(str2_+'_')//打印时加光标
-            }else{
-                clearInterval(timer2)
-                $("#"+answer).children('pre').text(str2_)//打印时加光标
-            }
-        },5)
-    }
-    
+
     function send_post() {
+        if (($('#key').length) && ($('#key').val().length != 51)) {
+            layer.msg("请输入正确的API-KEY", { icon: 5 });
+            return;
+        }
 
         var prompt = $("#kw-target").val();
+
         if (prompt == "") {
             layer.msg("请输入您的问题", { icon: 5 });
             return;
@@ -79,25 +51,105 @@ $(document).ready(function () {
         var loading = layer.msg('正在组织语言，请稍等片刻...', {
             icon: 16,
             shade: 0.4,
-            time:false //取消自动关闭
+            time: false //取消自动关闭
         });
+
+        function streaming() {
+            var es = new EventSource("stream.php");
+            var isstarted = true;
+            var alltext = "";
+            var isalltext = false;
+            es.onerror = function (event) {
+                layer.close(loading);
+                var errcode = getCookie("errcode");
+                switch (errcode) {
+                    case "invalid_api_key":
+                        layer.msg("API-KEY不合法");
+                        break;
+                    case "context_length_exceeded":
+                        layer.msg("问题和上下文长度超限，请重新提问。");
+                        break;
+                    case "rate_limit_reached":
+                        layer.msg("同时访问用户过多，请稍后再试。");
+                        break;
+                    case null:
+                        layer.msg("OpenAI服务器访问超时。");
+                        break;
+                    default:
+                        layer.msg("服务器出错了，错误类型：" + errcode);
+                }
+                es.close();
+                return;
+            }
+            es.onmessage = function (event) {
+                if (isstarted) {
+                    layer.close(loading);
+                    $("#kw-target").val("请耐心等待AI把话说完……");
+                    $("#kw-target").attr("disabled", true);
+                    layer.msg("处理成功！");
+                    isstarted = false;
+                    answer = randomString(16);
+                    $("#article-wrapper").append('<li class="article-title" id="q' + answer + '"><pre></pre></li>');
+                    for (var j = 0; j < prompt.length; j++) {
+                        $("#q" + answer).children('pre').text($("#q" + answer).children('pre').text() + prompt[j]);
+                    }
+                    $("#article-wrapper").append('<li class="article-content" id="' + answer + '"></li>');
+                    let str_ = '';
+                    let i = 0;
+                    let timer = setInterval(() => {
+                        alltext = alltext.replace(/\\n/g, '\n');
+                        if (str_.length < alltext.length) {
+                            str_ += alltext[i++];
+                            strforcode = str_ + "_";
+                            if ((str_.split("```").length % 2) == 0) strforcode += "\n```\n";
+                        } else {
+                            if (isalltext) {
+                                clearInterval(timer);
+                                strforcode = str_;
+                                $("#kw-target").val("");
+                                $("#kw-target").attr("disabled", false);
+                            }
+                        }
+                        var converter = new showdown.Converter();
+                        $("#" + answer).html(converter.makeHtml(strforcode));
+                        hljs.highlightAll();
+                        document.getElementById("article-wrapper").scrollTop = 100000;
+                    }, 30);
+                }
+                if (event.data == "[DONE]") {
+                    isalltext = true;
+                    contextarray.push([prompt, alltext]);
+                    contextarray = contextarray.slice(-5); //只保留最近5次对话作为上下文，以免超过最大tokens限制
+                    es.close();
+                    return;
+                }
+                var json = eval("(" + event.data + ")");
+                if (json.choices[0].delta.hasOwnProperty("content")) {
+                    if (alltext == "") {
+                        alltext = json.choices[0].delta.content.replace(/^\n+/, '');
+                    } else {
+                        alltext += json.choices[0].delta.content;
+                    }
+                }
+            }
+        }
+
+
         $.ajax({
             cache: true,
             type: "POST",
-            url: "message.php",
+            url: "setsession.php",
             data: {
                 message: prompt,
-                context:$("#keep").prop("checked")?JSON.stringify(contextarray):'[]',
+                context: (!($("#keep").length) || ($("#keep").prop("checked"))) ? JSON.stringify(contextarray) : '[]',
             },
             dataType: "json",
             success: function (results) {
-                layer.close(loading);
-                $("#kw-target").val("");
-                layer.msg("处理成功！");
-                contextarray.push([prompt, results.raw_message]);
-                articlewrapper("问："+prompt,randomString(16),"答："+results.raw_message);
+                streaming();
             }
         });
+
+
     }
 
     function randomString(len) {

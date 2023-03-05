@@ -4,6 +4,7 @@ html {
 }
 body {
     margin:0;
+    height:100%;
 }
 main {
     display:block;
@@ -40,6 +41,7 @@ b, strong {
 code, kbd, samp {
     font-family:monospace, monospace;
     font-size:1em;
+    line-height:1.5em;
 }
 small {
     font-size:80%;
@@ -1361,7 +1363,7 @@ a.unlinks-deco {
 }
 @media (min-width:1200px) {
     .container {
-        width:85%;
+        width:95%;
     }
 }
 @media (max-width:1444px) and (min-width:993px) {
