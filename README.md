@@ -1,27 +1,14 @@
 # chatgpt
 ------
-**代码已更新，大家赶快去体验吧。很多人想要Demo网站中自己输入API-KEY的功能，已经把代码加上了，取消index.php的注释就行了，记得把上面的选择连续对话部分注释掉。**
+**采用Stream流模式通信，一边生成一边输出，响应速度超过官网。前端采用JS的EventSource，还将Markdown格式文本进行了排版，对代码进行了着色处理。很多人想要Demo网站中自己输入API-KEY的功能，已经把代码加上了，取消index.php的注释就行了。为了美观可以把上面的“连续对话”部分注释掉，要不然手机访问不是很友好。**
 
-------
-
-**2023-03-04 19:50发布：根据Issues里面某位网友的提示，已初步完成采用Stream流模式通信的Demo，一边生成一边输出，响应速度超过官网。前端采用JS的EventSource，后端使用PHP开发。新版本还将Markdown格式文本进行了排版，对代码进行了着色处理。想尝尝鲜的朋友可以访问下面这个网站试用，发现bug的话欢迎进群反馈。**
+**在国内访问OpenAI的新接口会提示超时，如果你本地有HTTP-PROXY，可以把stream.php里面注释掉的“curl_setopt($ch, CURLOPT_PROXY, "http://127.0.0.1:1081");”修改一下，这样就可以通过你本地的代理访问openai的接口。如果你自己没代理，可以使用热心网友提供的反代地址，把“curl_setopt($ch, CURLOPT_URL, 'https://api.openai.com/v1/chat/completions');”这行里面的网址改成'https://openai.1rmb.tk/v1/chat/completions' 能用多久无法保证哦**
 
 *测试网址：http://mm1.ltd*
 
 ![微信图片_20230304200105](https://user-images.githubusercontent.com/5563148/222899925-c8cbdd67-2560-4853-af44-cf45fe7725d9.png)
 
 ------
-
-**2023-03-02 23:50发布：目前从国内访问OpenAI的新接口会提示超时，国外正常。建议把代码部署到海外的服务器上即可正常使用。如果实在没有环境，可以访问我搭建的中转服务器。把message.php文件中的接口地址指向这里：http://mm1.ltd/chatgpt.php （使用https方式访问也可以）**
-
-*即把原来的：curl_setopt($ch, CURLOPT_URL, 'https://api.openai.com/v1/chat/completions');*
-
-*修改为：curl_setopt($ch, CURLOPT_URL, 'http://mm1.ltd/chatgpt.php');*
-
-**这样在国内也可以正常调用接口了。**
-
-------
-
 
 PHP版调用OpenAI的API接口进行问答的Demo，代码已更新为调用最新的gpt-3.5-turbo模型。接口格式有些变化，代码已适配，实测服务器响应更快，效果更好。
 
