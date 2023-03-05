@@ -1,8 +1,10 @@
 # chatgpt
 ------
-**采用Stream流模式通信，一边生成一边输出，响应速度超过官网。前端采用JS的EventSource，还将Markdown格式文本进行了排版，对代码进行了着色处理。很多人想要Demo网站中自己输入API-KEY的功能，已经把代码加上了，取消index.php的注释就行了。为了美观可以把上面的“连续对话”部分注释掉，要不然手机访问不是很友好。**
+**PHP版调用OpenAI的API接口进行问答的Demo，代码已更新为调用最新的gpt-3.5-turbo模型。
+采用Stream流模式通信，一边生成一边输出，响应速度超过官网。前端采用JS的EventSource，还将Markdown格式文本进行了排版，对代码进行了着色处理。**
+很多人想要Demo网站中自己输入API-KEY的功能，已经把代码加上了，取消index.php的注释就行了。为了美观可以把上面的“连续对话”部分注释掉，要不然手机访问不是很友好。
 
-**在国内访问OpenAI的新接口会提示超时，如果你本地有HTTP-PROXY，可以把stream.php里面注释掉的“curl_setopt($ch, CURLOPT_PROXY, " http://127.0.0.1:1081 ");”修改一下，这样就可以通过你本地的代理访问openai的接口。如果你自己没代理，可以使用热心网友提供的反代地址，把“curl_setopt($ch, CURLOPT_URL, ' https://api.openai.com/v1/chat/completions ');”这行里面的网址改成' https://openai.1rmb.tk/v1/chat/completions '能用多久无法保证哦**
+在国内访问OpenAI的新接口会提示超时，如果你本地有HTTP-PROXY，可以把stream.php里面注释掉的“curl_setopt($ch, CURLOPT_PROXY, " http://127.0.0.1:1081 ");”修改一下，这样就可以通过你本地的代理访问openai的接口。如果你自己没代理，可以使用热心网友提供的反代地址，把“curl_setopt($ch, CURLOPT_URL, ' https://api.openai.com/v1/chat/completions ');”这行里面的网址改成' https://openai.1rmb.tk/v1/chat/completions '能用多久无法保证哦
 
 *测试网址：http://mm1.ltd*
 
@@ -10,21 +12,14 @@
 
 ------
 
-PHP版调用OpenAI的API接口进行问答的Demo，代码已更新为调用最新的gpt-3.5-turbo模型。接口格式有些变化，代码已适配，实测服务器响应更快，效果更好。
-
-页面UI简洁，支持连续对话，支持保存查询日志。
-
-核心代码只有一两个文件，没有用任何框架，修改调试很方便，只需要修改message.php中的API_KEY即可使用。
+核心代码只有几个文件，没有用任何框架，修改调试很方便，只需要修改stream.php中的API_KEY即可使用。
 
 index.php前面的代码还可以实现区分内外网IP，内网直接访问，外网通过BASIC认证后可访问。可以根据需要删掉注释并进行修改。
 
 适合放在公司内网，让同事们一起体验chatGPT的强大功能，或者自己用。
 
-![微信截图_20230302172448](https://user-images.githubusercontent.com/5563148/222393529-f21d8db3-0079-4062-bd0f-677d5f40aadc.png)
-
 
 FAQ：
-部署调试时请注意两点，一个是要有curl扩展，一个是chat.txt文件要有写权限。
 
 之前OpenAI官方API提供的最先进的模型是text-davinci-003，比官网的ChatGPT稍弱一些。最近OpenAI终于放出了gpt-3.5-turbo模型，理论上和官网的ChatGPT几乎没区别了。只是由于接口限制，问题和答案最多4096个tokens，实测1个汉字算2个tokens。
 
