@@ -5,7 +5,7 @@ session_start();
 $postData = $_SESSION['data'];
 $ch = curl_init();
 $OPENAI_API_KEY = "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";
-if (isset($_SESSION['key'])) {
+if ((isset($_SESSION['key'])) && (!empty($_POST['key']))) {
     $OPENAI_API_KEY = $_SESSION['key'];
 }
 $headers  = [
