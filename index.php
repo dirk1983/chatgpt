@@ -32,6 +32,25 @@ $type = "个人";
 	<link rel="stylesheet" href="css/common.css?v1.1">
 	<link rel="stylesheet" href="css/wenda.css?v1.1">
 	<link rel="stylesheet" href="css/hightlight.css">
+<style>
+#kw-target {
+  background-color: black;
+  color: white;
+  height: auto;
+}
+
+textarea {
+  height: auto;
+  min-height: 100px; /* 输入区域的最小高度 */
+}
+
+#fixed-block {
+  height: auto; /* 容器元素自适应高度 */
+}
+
+
+</style>
+	
 </head>
 
 <body>
@@ -75,7 +94,7 @@ $type = "个人";
 						<div id="fixed-block">
 							<div class="precast-block" id="kw-target-box" data-flex="main:left cross:center">
 								<div id="target-box" class="box">
-									<input type="text" name="kw-target" placeholder="请点此提问" id="kw-target" autofocus>
+									<textarea name="kw-target" placeholder="在此提问。电脑使用 Shift+Enter 换行，Enter发送。移动端输入法换行，点击页面按钮发送。" id="kw-target" autofocus rows="5"></textarea>
 								</div>
 								<div class="right-btn layout-bar">
 									<p class="btn ai-btn bright-btn" id="ai-btn" data-flex="main:center cross:center"><i class="iconfont icon-wuguan"></i>发送</p>
