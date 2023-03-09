@@ -13,12 +13,53 @@ function getCookie(name) {
 
 $(document).ready(function () {
 
-    $("#kw-target").on('keydown', function (event) {
-        if (event.keyCode == 13) {
-            send_post();
+$("#kw-target").on('keydown', function (event) {
+    if (event.keyCode == 13 && !event.shiftKey) {
+        if(window.innerWidth <= 768){  // 假设宽度小于等于768px为移动设备
+            // 在移动设备上按下 Enter 键时触发 textarea 的换行功能
+            var content = this.value;
+            var caret = getCaret(this);
+            this.value = content.substring(0, caret) + "\n" + content.substring(caret);
+            setCaret(this, caret + 1);
             return false;
         }
-    });
+        send_post();
+        return false;
+    }
+});
+
+// 获取光标位置
+function getCaret(el) {
+    if (el.selectionStart) {
+        return el.selectionStart;
+    } else if (document.selection) {
+        el.focus();
+        var r = document.selection.createRange();
+        if (r == null) {
+            return 0;
+        }
+        var re = el.createTextRange(), rc = re.duplicate();
+        re.moveToBookmark(r.getBookmark());
+        rc.setEndPoint('EndToStart', re);
+        return rc.text.length;
+    }
+    return 0;
+}
+
+// 设置光标位置
+function setCaret(el, pos) {
+    if (el.setSelectionRange) {
+        el.focus();
+        el.setSelectionRange(pos, pos);
+    } else if (el.createTextRange) {
+        var range = el.createTextRange();
+        range.collapse(true);
+        range.moveEnd('character', pos);
+        range.moveStart('character', pos);
+        range.select();
+    }
+}
+
     $("#ai-btn").click(function () {
         send_post();
         return false;
@@ -48,7 +89,7 @@ $(document).ready(function () {
             return;
         }
 
-        var loading = layer.msg('正在组织语言，请稍等片刻...', {
+        var loading = layer.msg('AI正在思考，请稍等...Processing', {
             icon: 16,
             shade: 0.4,
             time: false //取消自动关闭
@@ -76,7 +117,7 @@ $(document).ready(function () {
                         layer.msg("OpenAI服务器访问超时。");
                         break;
                     default:
-                        layer.msg("服务器出错了，错误类型：" + errcode);
+                        layer.msg("OpenAI服务器故障，错误类型：" + errcode);
                 }
                 es.close();
                 return;
