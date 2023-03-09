@@ -205,6 +205,15 @@ $type = "个人";
     <script src="js/chat.js?v2.8"></script>
     <script src="js/highlight.min.js"></script>
     <script src="js/showdown.min.js"></script>
+    <script>
+        function insertPresetText() {
+            var select = document.getElementById("preset-text");
+            var text = select.options[select.selectedIndex].value;
+            document.getElementById("kw-target").value = text;
+        }</script>
+    <p>
+
+    </p>
 </body>
 
 </html>
