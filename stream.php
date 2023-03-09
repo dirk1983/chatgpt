@@ -20,7 +20,7 @@ setcookie("errmsg", "");
 
 $callback = function ($ch, $data) {
     $l = strlen($data);
-    $parts = explode(PHP_EOL, $data);
+    $parts = explode(PHP_EOL.PHP_EOL, $data);
 
     foreach($parts as $v){
         if(empty(trim($v))){
