@@ -19,18 +19,33 @@ setcookie("errcode", ""); //EventSource无法获取错误信息，通过cookie�
 setcookie("errmsg", "");
 
 $callback = function ($ch, $data) {
-    $complete = json_decode($data);
-    if (isset($complete->error)) {
-        setcookie("errcode", $complete->error->code);
-        setcookie("errmsg", $data);
-        if (strpos($complete->error->message, "Rate limit reached") === 0) { //访问频率超限错误返回的code为空，特殊处理一下
-            setcookie("errcode", "rate_limit_reached");
+    $l = strlen($data);
+    $parts = explode(PHP_EOL, $data);
+
+    foreach($parts as $v){
+        if(empty(trim($v))){
+            continue;
         }
-    } else {
-        echo $data;
-        $_SESSION['response'] .= $data;
+        
+        $new_data = str_replace("data: ", "", $v);
+        $complete = json_decode(trim($new_data));
+        if(empty($complete)){
+            echo $v . PHP_EOL . PHP_EOL;
+        }elseif(isset($complete->error)) {
+            setcookie("errcode", $complete->error->code);
+            setcookie("errmsg", $v);
+            if (strpos($complete->error->message, "Rate limit reached") === 0) { //访问频率超限错误返回的code为空，特殊处理一下
+                setcookie("errcode", "rate_limit_reached");
+            }
+        } else {
+            unset($complete->id,$complete->object,$complete->created,$complete->model);
+            $data_str = "data: " . json_encode($complete) . PHP_EOL . PHP_EOL;
+            echo $data_str;
+            $_SESSION['response'] .= $data;
+        }
     }
-    return strlen($data);
+
+    return $l;
 };
 
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
