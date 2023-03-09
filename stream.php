@@ -3,9 +3,10 @@ header("Access-Control-Allow-Origin: *");
 header("Content-Type: text/event-stream");
 session_start();
 $postData = $_SESSION['data'];
+$_SESSION['response'] = "";
 $ch = curl_init();
 $OPENAI_API_KEY = "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";
-if (isset($_SESSION['key'])) {
+if ((isset($_SESSION['key'])) && (!empty($_POST['key']))) {
     $OPENAI_API_KEY = $_SESSION['key'];
 }
 $headers  = [
@@ -27,6 +28,7 @@ $callback = function ($ch, $data) {
         }
     } else {
         echo $data;
+        $_SESSION['response'] .= $data;
     }
     return strlen($data);
 };
@@ -42,4 +44,21 @@ curl_setopt($ch, CURLOPT_WRITEFUNCTION, $callback);
 //curl_setopt($ch, CURLOPT_PROXY, "http://127.0.0.1:1081");
 
 curl_exec($ch);
+
+$answer = "";
+$responsearr = explode("data: ", $_SESSION['response']);
+
+foreach ($responsearr as $msg) {
+    $contentarr = json_decode(trim($msg), true);
+    if (isset($contentarr['choices'][0]['delta']['content'])) {
+        $answer .= $contentarr['choices'][0]['delta']['content'];
+    }
+}
+
+$questionarr = json_decode($_SESSION['data'], true);
+$filecontent = $_SERVER["REMOTE_ADDR"] . " | " . date("Y-m-d H:i:s") . "\n";
+$filecontent .= "Q:" . end($questionarr['messages'])['content'] .  "\nA:" . trim($answer) . "\n----------------\n";
+$myfile = fopen(__DIR__ . "/chat.txt", "a") or die("Writing file failed.");
+fwrite($myfile, $filecontent);
+fclose($myfile);
 curl_close($ch);
