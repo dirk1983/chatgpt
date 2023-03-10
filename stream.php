@@ -20,13 +20,13 @@ setcookie("errmsg", "");
 
 $callback = function ($ch, $data) {
     $l = strlen($data);
-    $parts = explode(PHP_EOL.PHP_EOL, $data);
+    $parts = explode("\n\n", $data);
 
     foreach($parts as $v){ 
         $new_data = str_replace("data: ", "", $v);
         $complete = json_decode(trim($new_data));
         if(empty($complete)){
-            echo $v . PHP_EOL . PHP_EOL;
+            echo $v . "\n\n";
         }elseif(isset($complete->error)) {
             setcookie("errcode", $complete->error->code);
             setcookie("errmsg", $v);
@@ -35,7 +35,7 @@ $callback = function ($ch, $data) {
             }
         } else {
             unset($complete->id,$complete->object,$complete->created,$complete->model);
-            $data_str = "data: " . json_encode($complete) . PHP_EOL . PHP_EOL;
+            $data_str = "data: " . json_encode($complete) . "\n\n";
             echo $data_str;
             $_SESSION['response'] .= $data;
         }
