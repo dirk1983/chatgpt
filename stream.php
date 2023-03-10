@@ -5,8 +5,8 @@ session_start();
 $postData = $_SESSION['data'];
 $_SESSION['response'] = "";
 $ch = curl_init();
-$OPENAI_API_KEY = "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";
-if ((isset($_SESSION['key'])) && (!empty($_POST['key']))) {
+$OPENAI_API_KEY = "sk-replace_with_your_api_key_dude";
+if (isset($_SESSION['key'])) {
     $OPENAI_API_KEY = $_SESSION['key'];
 }
 $headers  = [
@@ -25,6 +25,12 @@ $callback = function ($ch, $data) {
         setcookie("errmsg", $data);
         if (strpos($complete->error->message, "Rate limit reached") === 0) { //访问频率超限错误返回的code为空，特殊处理一下
             setcookie("errcode", "rate_limit_reached");
+        }
+        if (strpos($complete->error->message, "Your access was terminated") === 0) { //违规使用，被封禁，特殊处理一下
+            setcookie("errcode", "access_terminated");
+        }
+        if (strpos($complete->error->message, "You didn't provide an API key") === 0) { //未提供API-KEY
+            setcookie("errcode", "no_api_key");
         }
     } else {
         echo $data;

@@ -1,5 +1,4 @@
 .logo-title {
-    line-height: 50px;
     color: #fff;
     text-decoration: none
 }
@@ -23,7 +22,7 @@
 }
 
 #article-wrapper {
-    height: calc(100vh - 280px);
+    height: calc(100vh - 178px);
     overflow-y: auto;
     border: 1px solid;
     border-radius: var(--zhuluan-primary-border-radius);

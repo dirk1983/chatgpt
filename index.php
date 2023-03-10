@@ -32,22 +32,6 @@ $type = "个人";
     <link rel="stylesheet" href="css/common.css?v1.1">
     <link rel="stylesheet" href="css/wenda.css?v1.1">
     <link rel="stylesheet" href="css/hightlight.css">
-    <style>
-        #kw-target {
-          background-color: black;
-          color: white;
-          height: auto;
-        }
-
-        textarea {
-          height: auto;
-          min-height: 100px; /* 输入区域的最小高度 */
-        }
-
-        #fixed-block {
-          height: auto; /* 容器元素自适应高度 */
-        }
-    </style>
 </head>
 
 <body>
@@ -66,19 +50,21 @@ $type = "个人";
             <div class="container">
                 <article class="article" id="article">
                     <div class="article-box">
-                        <div style="text-align: center;color:#9ca2a8">
-                            采用最新的gpt-3.5-turbo模型，stream模式，秒回
-                        </div>
                         <div class="precast-block" data-flex="main:left">
+                            <!--
+                            <div class="input-group">
+                                <span style="text-align: center;color:#9ca2a8">&nbsp;&nbsp;API-KEY&nbsp;&nbsp;</span>
+                                <input type="password" id="key" style="border:1px solid grey;display:block;max-width:270px;width:calc(100% - 70px);" onload="this.focus();">
+                            </div>
+-->
                             <div class="input-group">
                                 <span style="text-align: center;color:#9ca2a8">&nbsp;&nbsp;连续对话：</span>
                                 <input type="checkbox" id="keep" checked="" style="min-width:220px;">
                                 <label for="keep"></label>
-                                <span style="text-align: center;color:#9ca2a8">&nbsp;&nbsp;&nbsp;&nbsp;默认开启</span>
                             </div>
                             <div class="input-group">
-                                <span style="text-align: center;color:#9ca2a8">&nbsp;&nbsp;选择预设话术：</span>
-                                <select id="preset-text" onchange="insertPresetText()">
+                                <span style="text-align: center;color:#9ca2a8">&nbsp;&nbsp;预设话术：</span>
+                                <select id="preset-text" onchange="insertPresetText()" style="width:calc(100% - 90px);max-width:280px;">
                                     <option value="">请选择</option>
                                     <option value="我想让你充当 Linux 终端。我将输入命令，您将回复终端应显示的内容。我希望您只在一个唯一的代码块内回复终端输出，而不是其他任何内容。不要写解释。除非我指示您这样做，否则不要键入命令。当我需要用英语告诉你一些事情时，我会把文字放在中括号内[就像这样]。我的第一个命令是 pwd">充当 Linux 终端</option>
                                     <option value="我希望你能担任英语翻译、拼写校对和修辞改进的角色。我会用任何语言和你交流，你会识别语言，将其翻译并用更为优美和精炼的英语回答我。请将我简单的词汇和句子替换成更为优美和高雅的表达方式，确保意思不变，但使其更具文学性。请仅回答更正和改进的部分，不要写解释。我的第一句话是“how are you ?”，请翻译它。">充当英语翻译和改进者</option>
@@ -203,7 +189,7 @@ $type = "个人";
                         <div id="fixed-block">
                             <div class="precast-block" id="kw-target-box" data-flex="main:left cross:center">
                                 <div id="target-box" class="box">
-                                    <textarea name="kw-target" placeholder="在此提问。电脑使用 Shift+Enter 换行，Enter发送。移动端输入法换行，点击页面按钮发送。" id="kw-target" autofocus rows="5"></textarea>
+                                    <textarea name="kw-target" placeholder="在此提问，按 Ctrl+Enter 发送" id="kw-target" autofocus rows=1></textarea>
                                 </div>
                                 <div class="right-btn layout-bar">
                                     <p class="btn ai-btn bright-btn" id="ai-btn" data-flex="main:center cross:center"><i class="iconfont icon-wuguan"></i>发送</p>
@@ -222,11 +208,6 @@ $type = "个人";
     <script src="js/highlight.min.js"></script>
     <script src="js/showdown.min.js"></script>
     <script>
-        function insertPresetText() {
-            var select = document.getElementById("preset-text");
-            var text = select.options[select.selectedIndex].value;
-            document.getElementById("kw-target").value = text;
-        }
     </script>
 </body>
 
