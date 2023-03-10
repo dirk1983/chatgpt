@@ -22,11 +22,7 @@ $callback = function ($ch, $data) {
     $l = strlen($data);
     $parts = explode(PHP_EOL.PHP_EOL, $data);
 
-    foreach($parts as $v){
-        if(empty(trim($v))){
-            continue;
-        }
-        
+    foreach($parts as $v){ 
         $new_data = str_replace("data: ", "", $v);
         $complete = json_decode(trim($new_data));
         if(empty($complete)){
