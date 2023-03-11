@@ -61,8 +61,18 @@ function autoresize() {
     var height = div.height();
     var rows = Math.ceil(height / 20);
     div.remove();
-    textarea.attr('rows', rows);
+    if(rows>=7){
+        textarea.attr('wrap', 'off');
+        textarea.attr('style', 'overflow:scroll;');
+        textarea.attr('rows', '7');
+    }
+    else
+        textarea.attr('rows', rows);
     $("#article-wrapper").height(parseInt($(window).height()) - parseInt($("#fixed-block").height()) - parseInt($(".layout-header").height()) - 80);
+}
+
+function scrollEnd() {
+    $("#article-wrapper").scrollTop(parseInt($(window).height()));
 }
 
 $(document).ready(function () {
@@ -77,10 +87,12 @@ $(document).ready(function () {
 
     $(window).resize(function () {
         autoresize();
+        scrollEnd();
     });
 
     $('#kw-target').on('input', function () {
         autoresize();
+        scrollEnd();
     });
 
     $("#ai-btn").click(function () {
