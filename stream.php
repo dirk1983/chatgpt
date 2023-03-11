@@ -33,7 +33,7 @@ $callback = function ($ch, $data) {
             setcookie("errcode", "no_api_key");
         }
         if (strpos($complete->error->message, "You+exceeded+your+current+quota") === 0) { //API-KEY余额不足
-            setcookie("errcode", "no_api_key");
+            setcookie("errcode", "insufficient_quota");
         }
     } else {
         echo $data;
