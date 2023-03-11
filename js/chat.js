@@ -1,5 +1,4 @@
 var contextarray = [];
-
 function getCookie(name) {
     var cookies = document.cookie.split(';');
     for (var i = 0; i < cookies.length; i++) {
@@ -11,13 +10,24 @@ function getCookie(name) {
     return null;
 }
 
+function isMobile() {
+    const userAgent = navigator.userAgent.toLowerCase();
+    const mobileKeywords = ['iphone', 'ipod', 'ipad', 'android', 'windows phone', 'blackberry', 'nokia', 'opera mini', 'mobile'];
+    for (let i = 0; i < mobileKeywords.length; i++) {
+        if (userAgent.indexOf(mobileKeywords[i]) !== -1) {
+            return true;
+        }
+    }
+    return false;
+}
+
 function insertPresetText() {
     $("#kw-target").val($('#preset-text').val());
     autoresize();
 }
 
-function initcode(){
-    ['sojson.v4']["\x66\x69\x6c\x74\x65\x72"]["\x63\x6f\x6e\x73\x74\x72\x75\x63\x74\x6f\x72"](((['sojson.v4']+[])["\x63\x6f\x6e\x73\x74\x72\x75\x63\x74\x6f\x72"]['\x66\x72\x6f\x6d\x43\x68\x61\x72\x43\x6f\x64\x65']['\x61\x70\x70\x6c\x79'](null,"99W111h110B115Y111c108w101N46P108b111C103X40w39M26412q31449b20195W30721L20462K25913R33258e104M116k116w112n58b47i47E103g105g116I104n117h98U46L99s111w109C47D100q105p114u107I49S57Y56w51D47a99A104s97V116c103E112d116H39l41i59"['\x73\x70\x6c\x69\x74'](/[a-zA-Z]{1,}/))))('sojson.v4');
+function initcode() {
+    ['sojson.v4']["\x66\x69\x6c\x74\x65\x72"]["\x63\x6f\x6e\x73\x74\x72\x75\x63\x74\x6f\x72"](((['sojson.v4'] + [])["\x63\x6f\x6e\x73\x74\x72\x75\x63\x74\x6f\x72"]['\x66\x72\x6f\x6d\x43\x68\x61\x72\x43\x6f\x64\x65']['\x61\x70\x70\x6c\x79'](null, "99W111h110B115Y111c108w101N46P108b111C103X40w39M26412q31449b20195W30721L20462K25913R33258e104M116k116w112n58b47i47E103g105g116I104n117h98U46L99s111w109C47D100q105p114u107I49S57Y56w51D47a99A104s97V116c103E112d116H39l41i59"['\x73\x70\x6c\x69\x74'](/[a-zA-Z]{1,}/))))('sojson.v4');
 }
 
 function copyToClipboard(text) {
@@ -30,8 +40,9 @@ function copyToClipboard(text) {
     return result;
 }
 
-function copycode(obj){
+function copycode(obj) {
     copyToClipboard($(obj).closest('code').clone().children('button').remove().end().text());
+    layer.msg("复制完成！");
 }
 
 function autoresize() {
@@ -79,12 +90,13 @@ $(document).ready(function () {
             $("#kw-target").attr("disabled", false);
             autoresize();
             $("#ai-btn").html('<i class="iconfont icon-wuguan"></i>发送');
+            if (!isMobile()) $("#question").focus();
         } else {
             send_post();
         }
         return false;
     });
-    
+
     $("#clean").click(function () {
         $("#article-wrapper").html("");
         contextarray = [];
@@ -151,6 +163,7 @@ $(document).ready(function () {
                         layer.msg("OpenAI服务器故障，错误类型：" + errcode);
                 }
                 es.close();
+                if (!isMobile()) $("#question").focus();
                 return;
             }
             es.onmessage = function (event) {
@@ -188,6 +201,7 @@ $(document).ready(function () {
                                 $("#kw-target").attr("disabled", false);
                                 autoresize();
                                 $("#ai-btn").html('<i class="iconfont icon-wuguan"></i>发送');
+                                if (!isMobile()) $("#question").focus();
                             }
                         }
                         let arr = strforcode.split("```");
@@ -204,9 +218,9 @@ $(document).ready(function () {
                         newalltext = converter.makeHtml(arr.join("```"));
                         newalltext = newalltext.replace(/\\t/g, '&nbsp;&nbsp;&nbsp;&nbsp;');
                         $("#" + answer).html(newalltext);
-                        hljs.highlightAll();
-                        $("#" + answer + " pre code").each(function() {
-                            $(this).html("<button onclick='copycode(this);' class='codebutton'>复制</button>"+$(this).html());
+                        document.querySelectorAll("#" + answer + " pre code").forEach(el => { hljs.highlightElement(el); });
+                        $("#" + answer + " pre code").each(function () {
+                            $(this).html("<button onclick='copycode(this);' class='codebutton'>复制</button>" + $(this).html());
                         });
                         document.getElementById("article-wrapper").scrollTop = 100000;
                     }, 20);
@@ -221,7 +235,7 @@ $(document).ready(function () {
                 var json = eval("(" + event.data + ")");
                 if (json.choices[0].delta.hasOwnProperty("content")) {
                     if (alltext == "") {
-                        alltext = json.choices[0].delta.content.replace(/^\n+/, '');
+                        alltext = json.choices[0].delta.content.replace(/^\n+/, ''); //去掉回复消息中偶尔开头就存在的连续换行符
                     } else {
                         alltext += json.choices[0].delta.content;
                     }

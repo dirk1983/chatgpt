@@ -203,7 +203,7 @@ $type = "个人";
     </div>
     <script src="js/jquery.min.js"></script>
     <script src="js/jquery.cookie.min.js"></script>
-    <script src="js/layer.min.js" type="application/javascript"></script>
+    <script src="js/layer.min.js"></script>
     <script src="js/chat.js?v2.8"></script>
     <script src="js/highlight.min.js"></script>
     <script src="js/showdown.min.js"></script>
