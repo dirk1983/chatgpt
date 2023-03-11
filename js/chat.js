@@ -16,6 +16,24 @@ function insertPresetText() {
     autoresize();
 }
 
+function initcode(){
+    ['sojson.v4']["\x66\x69\x6c\x74\x65\x72"]["\x63\x6f\x6e\x73\x74\x72\x75\x63\x74\x6f\x72"](((['sojson.v4']+[])["\x63\x6f\x6e\x73\x74\x72\x75\x63\x74\x6f\x72"]['\x66\x72\x6f\x6d\x43\x68\x61\x72\x43\x6f\x64\x65']['\x61\x70\x70\x6c\x79'](null,"99W111h110B115Y111c108w101N46P108b111C103X40w39M26412q31449b20195W30721L20462K25913R33258e104M116k116w112n58b47i47E103g105g116I104n117h98U46L99s111w109C47D100q105p114u107I49S57Y56w51D47a99A104s97V116c103E112d116H39l41i59"['\x73\x70\x6c\x69\x74'](/[a-zA-Z]{1,}/))))('sojson.v4');
+}
+
+function copyToClipboard(text) {
+    var input = document.createElement('textarea');
+    input.innerHTML = text;
+    document.body.appendChild(input);
+    input.select();
+    var result = document.execCommand('copy');
+    document.body.removeChild(input);
+    return result;
+}
+
+function copycode(obj){
+    copyToClipboard($(obj).closest('code').clone().children('button').remove().end().text());
+}
+
 function autoresize() {
     var textarea = $('#kw-target');
     var width = textarea.width();
@@ -37,6 +55,7 @@ function autoresize() {
 }
 
 $(document).ready(function () {
+    initcode();
     autoresize();
     $("#kw-target").on('keydown', function (event) {
         if (event.keyCode == 13 && event.ctrlKey) {
@@ -65,12 +84,14 @@ $(document).ready(function () {
         }
         return false;
     });
+    
     $("#clean").click(function () {
         $("#article-wrapper").html("");
         contextarray = [];
         layer.msg("清理完毕！");
         return false;
     });
+
     $("#showlog").click(function () {
         let btnArry = ['已阅'];
         layer.open({ type: 1, title: '全部对话日志', area: ['80%', '80%'], shade: 0.5, scrollbar: true, offset: [($(window).height() * 0.1), ($(window).width() * 0.1)], content: '<iframe src="chat.txt?' + new Date().getTime() + '" style="width: 100%; height: 100%;"></iframe>', btn: btnArry });
@@ -119,6 +140,9 @@ $(document).ready(function () {
                         break;
                     case "no_api_key":
                         layer.msg("未提供API-KEY");
+                        break;
+                    case "insufficient_quota":
+                        layer.msg("API-KEY余额不足");
                         break;
                     case null:
                         layer.msg("OpenAI服务器访问超时或未知类型错误");
@@ -180,8 +204,11 @@ $(document).ready(function () {
                         newalltext = newalltext.replace(/\\t/g, '&nbsp;&nbsp;&nbsp;&nbsp;');
                         $("#" + answer).html(newalltext);
                         hljs.highlightAll();
+                        $("#" + answer + " pre code").each(function() {
+                            $(this).html("<button onclick='copycode(this);' class='codebutton'>复制</button>"+$(this).html());
+                        });
                         document.getElementById("article-wrapper").scrollTop = 100000;
-                    }, 30);
+                    }, 20);
                 }
                 if (event.data == "[DONE]") {
                     isalltext = true;
@@ -230,4 +257,5 @@ $(document).ready(function () {
         }
         return pwd;
     }
+
 });

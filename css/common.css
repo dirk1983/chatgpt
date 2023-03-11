@@ -1045,10 +1045,6 @@ a.unlinks-deco {
 
 #kw-target-box {
     border-radius: var(--zhuluan-primary-border-radius) var(--zhuluan-primary-border-radius) 0 0;
-    -webkit-border-radius: ;
-    -moz-border-radius: ;
-    -ms-border-radius: ;
-    -o-border-radius: ;
 }
 
 #kw-target-box #kw-target {
@@ -1731,8 +1727,7 @@ a.unlinks-deco {
 
 @media (max-width:992px) {
     .layout-header {
-        position;
-        relative;
+        position: relative;
     }
 
     .layout-header .logo .links img {
@@ -1978,4 +1973,17 @@ a.unlinks-deco {
     border-color: #fff transparent #fff transparent;
     -webkit-animation-direction: reverse;
     animation-direction: reverse;
+}
+
+.codebutton {
+    float: right;
+    width: 50px;
+    text-align: center;
+    line-height: 22px;
+    font-size: 14px;
+    border-radius: var(--zhuluan-primary-border-radius);
+    cursor: pointer;
+    transition: all .4s;
+    color: var(--zhuluan-black-3-color);
+    background: linear-gradient(90deg, var(--zhuluan-custom-e8-color), var(--zhuluan-custom-d8-color));
 }
