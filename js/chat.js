@@ -90,7 +90,7 @@ $(document).ready(function () {
             $("#kw-target").attr("disabled", false);
             autoresize();
             $("#ai-btn").html('<i class="iconfont icon-wuguan"></i>发送');
-            if (!isMobile()) $("#question").focus();
+            if (!isMobile()) $("#kw-target").focus();
         } else {
             send_post();
         }
@@ -163,7 +163,7 @@ $(document).ready(function () {
                         layer.msg("OpenAI服务器故障，错误类型：" + errcode);
                 }
                 es.close();
-                if (!isMobile()) $("#question").focus();
+                if (!isMobile()) $("#kw-target").focus();
                 return;
             }
             es.onmessage = function (event) {
@@ -201,7 +201,7 @@ $(document).ready(function () {
                                 $("#kw-target").attr("disabled", false);
                                 autoresize();
                                 $("#ai-btn").html('<i class="iconfont icon-wuguan"></i>发送');
-                                if (!isMobile()) $("#question").focus();
+                                if (!isMobile()) $("#kw-target").focus();
                             }
                         }
                         let arr = strforcode.split("```");
@@ -218,7 +218,7 @@ $(document).ready(function () {
                         newalltext = converter.makeHtml(arr.join("```"));
                         newalltext = newalltext.replace(/\\t/g, '&nbsp;&nbsp;&nbsp;&nbsp;');
                         $("#" + answer).html(newalltext);
-                        document.querySelectorAll("#" + answer + " pre code").forEach(el => { hljs.highlightElement(el); });
+                        if (document.querySelector("#" + answer + " pre code")) document.querySelectorAll("#" + answer + " pre code").forEach(el => { hljs.highlightElement(el); });
                         $("#" + answer + " pre code").each(function () {
                             $(this).html("<button onclick='copycode(this);' class='codebutton'>复制</button>" + $(this).html());
                         });
