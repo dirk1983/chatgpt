@@ -196,6 +196,7 @@ $(document).ready(function () {
                                 arr[j] = arr[j].replace(/\n\n/g, '\n');
                                 arr[j] = arr[j].replace(/\n/g, '\n\n');
                                 arr[j] = arr[j].replace(/\t/g, '\\t');
+                                arr[j] = arr[j].replace(/\n {4}/g, '\n\\t');
                                 arr[j] = $("<div>").text(arr[j]).html();
                             }
                         }
