@@ -32,7 +32,7 @@ $callback = function ($ch, $data) {
         if (strpos($complete->error->message, "You didn't provide an API key") === 0) { //未提供API-KEY
             setcookie("errcode", "no_api_key");
         }
-        if (strpos($complete->error->message, "You+exceeded+your+current+quota") === 0) { //API-KEY余额不足
+        if (strpos($complete->error->message, "You exceeded your current quota") === 0) { //API-KEY余额不足
             setcookie("errcode", "insufficient_quota");
         }
     } else {
