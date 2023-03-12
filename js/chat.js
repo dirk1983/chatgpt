@@ -221,7 +221,7 @@ $(document).ready(function () {
                         newalltext = converter.makeHtml(arr.join("```"));
                         newalltext = newalltext.replace(/\\t/g, '&nbsp;&nbsp;&nbsp;&nbsp;');
                         $("#" + answer).html(newalltext);
-                        if (document.querySelector("#" + answer + " pre code")) document.querySelectorAll("#" + answer + " pre code").forEach(el => { hljs.highlightElement(el); });
+                        if (document.querySelector("[id='" + answer + "']" + " pre code")) document.querySelectorAll("[id='" + answer + "']" + " pre code").forEach(el => { hljs.highlightElement(el); });
                         $("#" + answer + " pre code").each(function () {
                             $(this).html("<button onclick='copycode(this);' class='codebutton'>复制</button>" + $(this).html());
                         });
