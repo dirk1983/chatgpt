@@ -156,6 +156,9 @@ $(document).ready(function () {
                     case "insufficient_quota":
                         layer.msg("API-KEY余额不足");
                         break;
+                    case "account_deactivated":
+                        layer.msg("账户已禁用");
+                        break;
                     case null:
                         layer.msg("OpenAI服务器访问超时或未知类型错误");
                         break;
