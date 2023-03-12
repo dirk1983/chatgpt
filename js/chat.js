@@ -187,9 +187,9 @@ $(document).ready(function () {
                     let str_ = '';
                     let i = 0;
                     timer = setInterval(() => {
-                        //下面这行是为了处理有时服务器错误地返回\\n作为换行符，但返回的结果如果包含代码，则\\n是正确的格式。
                         let newalltext = alltext;
-                        if (newalltext.indexOf("```") == -1) {
+                        //有时服务器错误地返回\\n作为换行符，尤其是包含上下文的提问时，这行代码可以处理一下。
+                        if (newalltext.split("\n\n").length == newalltext.split("\n").length) {
                             newalltext = newalltext.replace(/\\n/g, '\n');
                         }
                         if (str_.length < newalltext.length) {

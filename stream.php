@@ -37,7 +37,7 @@ $callback = function ($ch, $data) {
         }
     } else {
         echo $data;
-        $_SESSION['response'] .= 'z9J7L0b42g32' . $data;
+        $_SESSION['response'] .= $data;
     }
     return strlen($data);
 };
@@ -55,10 +55,13 @@ curl_setopt($ch, CURLOPT_WRITEFUNCTION, $callback);
 curl_exec($ch);
 
 $answer = "";
-$responsearr = explode("z9J7L0b42g32data: ", $_SESSION['response']);
+if (substr(trim($_SESSION['response']), -6) == "[DONE]") {
+    $_SESSION['response'] = substr(trim($_SESSION['response']), 0, -6) . "{";
+}
+$responsearr = explode("}\n\ndata: {", $_SESSION['response']);
 
 foreach ($responsearr as $msg) {
-    $contentarr = json_decode(trim($msg), true);
+    $contentarr = json_decode("{" . trim($msg) . "}", true);
     if (isset($contentarr['choices'][0]['delta']['content'])) {
         $answer .= $contentarr['choices'][0]['delta']['content'];
     }
