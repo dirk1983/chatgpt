@@ -21,7 +21,7 @@
 
 如果你实在不会买海外服务器，那你有自己的域名吗？有的话还可以用cf worker自建反代，具体可以参考这篇文章：https://github.com/noobnooc/noobnooc/discussions/9
 
-*测试网址：http://mm1.ltd*
+*测试网址：http://mm1.ltd* *免输入API_KEY的测试网址：http://free.mm1.ltd*
 
 ![微信截图_20230312112146](https://user-images.githubusercontent.com/5563148/224522389-f60e3047-c0e6-49cd-bee7-80feaf2c86a4.png)
 
