@@ -1,4 +1,5 @@
 # chatgpt
+GPT-4已经发布，快进群参与讨论吧…… 免费加群，即将达到500人上限，欲加从速。
 ------
 **2023-03-11更新版本日志：**
 
@@ -16,9 +17,12 @@
 很多人想要Demo网站中自己输入API-KEY的功能，已经把代码加上了，取消index.php的注释就行了。为了美观可以把上面的“连续对话”部分注释掉，要不然手机访问不是很友好。
 
 在国内访问OpenAI的新接口会提示超时，如果你本地有HTTP-PROXY，可以把stream.php里面注释掉的“curl_setopt($ch, CURLOPT_PROXY, " http://127.0.0.1:1081 ");”修改一下，这样就可以通过你本地的代理访问openai的接口。
+
 如果你自己没代理，可以使用热心网友提供的反代地址，把“curl_setopt($ch, CURLOPT_URL, ' https://api.openai.com/v1/chat/completions ');”这行里面的网址改成' https://openai.1rmb.tk/v1/chat/completions '，不确定那个什么时候会失效，也可以进群再找其他群友求一个。不过反代的方式访问速度比较慢，最好还是自己买个海外服务器吧，每个月不到20元的有的是。
 
-*测试网址：http://mm1.ltd*
+如果你实在不会买海外服务器，那你有自己的域名吗？有的话还可以用cf worker自建反代，具体可以参考这篇文章：https://github.com/noobnooc/noobnooc/discussions/9
+
+*测试网址：http://mm1.ltd* 
 
 ![微信截图_20230312112146](https://user-images.githubusercontent.com/5563148/224522389-f60e3047-c0e6-49cd-bee7-80feaf2c86a4.png)
 
@@ -62,11 +66,14 @@ https://platform.openai.com/docs/api-reference/models/list
 
 对chatgpt感兴趣的同学们欢迎加群讨论。群里有很多大神，有问题可以互相帮助。如果需要在本项目基础上进行二次开发或者其他商务合作，可以加我微信沟通。
 
-由于群里人数已超过200，无法直接扫码进群，想进群的朋友可以加热心网友小号，由他帮忙拉进群。有自动拉人进群方案的朋友欢迎随时联系我，方便大家讨论。
+一号群已满员，请加二号群，重要消息我会在两边同步。
 
-![微信截图_20230306154434](https://user-images.githubusercontent.com/5563148/223048985-4cac05cb-acf0-4f04-aad5-1c3dcec609d0.png)
+![微信截图_20230315210025](https://user-images.githubusercontent.com/5563148/225316460-115f589c-3572-4f5f-a7a9-394d57d1d1e0.png)
 
 
-有热心网友建议我放个打赏码，各位如果真的想表达感谢，小额即可。我更希望我的代码可以抛砖引玉，助力各位找到新的业务模式，一年盈利，两年融资，三年上市，走上人生巅峰！
+有热心网友建议我放个打赏码，各位如果真的想表达感谢，小额即可。
 
 ![打赏码](https://user-images.githubusercontent.com/5563148/222968018-9def451a-bbce-4a7e-bde6-edecc7ced40f.jpg)
+
+最后，我还做了个在微信个人订阅号中通过调用OpenAI最新接口和gpt-3.5-turbo模型实现ChatGPT聊天机器人的功能，已开源，需要的朋友也可以拿去。
+https://github.com/dirk1983/chatgpt-wechat-personal

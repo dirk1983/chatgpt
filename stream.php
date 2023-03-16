@@ -35,6 +35,9 @@ $callback = function ($ch, $data) {
         if (strpos($complete->error->message, "You exceeded your current quota") === 0) { //API-KEY余额不足
             setcookie("errcode", "insufficient_quota");
         }
+        if (strpos($complete->error->message, "That model is currently overloaded") === 0) { //OpenAI服务器超负荷
+            setcookie("errcode", "model_overloaded");
+        }
     } else {
         echo $data;
         $_SESSION['response'] .= $data;

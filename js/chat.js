@@ -211,6 +211,9 @@ $(document).ready(function () {
                     case "account_deactivated":
                         layer.msg("账户已禁用");
                         break;
+                    case "model_overloaded":
+                        layer.msg("OpenAI模型超负荷，请重新发起请求");
+                        break;
                     case null:
                         layer.msg("OpenAI服务器访问超时或未知类型错误");
                         break;
