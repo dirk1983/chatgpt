@@ -1,4 +1,56 @@
 var contextarray = [];
+
+var defaults = {
+    html: false,        // Enable HTML tags in source
+    xhtmlOut: false,        // Use '/' to close single tags (<br />)
+    breaks: false,        // Convert '\n' in paragraphs into <br>
+    langPrefix: 'language-',  // CSS language prefix for fenced blocks
+    linkify: true,         // autoconvert URL-like texts to links
+    linkTarget: '',           // set target to open link in
+    typographer: true,         // Enable smartypants and other sweet transforms
+    _highlight: true,
+    _strict: false,
+    _view: 'html'
+};
+defaults.highlight = function (str, lang) {
+    if (!defaults._highlight || !window.hljs) { return ''; }
+
+    var hljs = window.hljs;
+    if (lang && hljs.getLanguage(lang)) {
+        try {
+            return hljs.highlight(lang, str).value;
+        } catch (__) { }
+    }
+
+    try {
+        return hljs.highlightAuto(str).value;
+    } catch (__) { }
+
+    return '';
+};
+mdHtml = new window.Remarkable('full', defaults);
+
+mdHtml.renderer.rules.table_open = function () {
+    return '<table class="table table-striped">\n';
+};
+
+mdHtml.renderer.rules.paragraph_open = function (tokens, idx) {
+    var line;
+    if (tokens[idx].lines && tokens[idx].level === 0) {
+        line = tokens[idx].lines[0];
+        return '<p class="line" data-line="' + line + '">';
+    }
+    return '<p>';
+};
+
+mdHtml.renderer.rules.heading_open = function (tokens, idx) {
+    var line;
+    if (tokens[idx].lines && tokens[idx].level === 0) {
+        line = tokens[idx].lines[0];
+        return '<h' + tokens[idx].hLevel + ' class="line" data-line="' + line + '">';
+    }
+    return '<h' + tokens[idx].hLevel + '>';
+};
 function getCookie(name) {
     var cookies = document.cookie.split(';');
     for (var i = 0; i < cookies.length; i++) {
@@ -188,6 +240,7 @@ $(document).ready(function () {
                     let i = 0;
                     timer = setInterval(() => {
                         let newalltext = alltext;
+                        let islastletter = false;
                         //有时服务器错误地返回\\n作为换行符，尤其是包含上下文的提问时，这行代码可以处理一下。
                         if (newalltext.split("\n\n").length == newalltext.split("\n").length) {
                             newalltext = newalltext.replace(/\\n/g, '\n');
@@ -200,6 +253,7 @@ $(document).ready(function () {
                             if (isalltext) {
                                 clearInterval(timer);
                                 strforcode = str_;
+                                islastletter = true;
                                 $("#kw-target").val("");
                                 $("#kw-target").attr("disabled", false);
                                 autoresize();
@@ -207,26 +261,29 @@ $(document).ready(function () {
                                 if (!isMobile()) $("#kw-target").focus();
                             }
                         }
-                        let arr = strforcode.split("```");
-                        for (var j = 0; j <= arr.length; j++) {
-                            if (j % 2 == 0) {
-                                arr[j] = arr[j].replace(/\n\n/g, '\n');
-                                arr[j] = arr[j].replace(/\n/g, '\n\n');
-                                arr[j] = arr[j].replace(/\t/g, '\\t');
-                                arr[j] = arr[j].replace(/\n {4}/g, '\n\\t');
-                                arr[j] = $("<div>").text(arr[j]).html();
-                            }
-                        }
-                        var converter = new showdown.Converter();
-                        newalltext = converter.makeHtml(arr.join("```"));
-                        newalltext = newalltext.replace(/\\t/g, '&nbsp;&nbsp;&nbsp;&nbsp;');
+                        //let arr = strforcode.split("```");
+                        //for (var j = 0; j <= arr.length; j++) {
+                        //    if (j % 2 == 0) {
+                        //        arr[j] = arr[j].replace(/\n\n/g, '\n');
+                        //        arr[j] = arr[j].replace(/\n/g, '\n\n');
+                        //        arr[j] = arr[j].replace(/\t/g, '\\t');
+                        //        arr[j] = arr[j].replace(/\n {4}/g, '\n\\t');
+                        //        arr[j] = $("<div>").text(arr[j]).html();
+                        //    }
+                        //}
+
+                        //var converter = new showdown.Converter();
+                        //newalltext = converter.makeHtml(arr.join("```"));
+                        newalltext = mdHtml.render(strforcode);
+                        //newalltext = newalltext.replace(/\\t/g, '&nbsp;&nbsp;&nbsp;&nbsp;');
                         $("#" + answer).html(newalltext);
-                        if (document.querySelector("[id='" + answer + "']" + " pre code")) document.querySelectorAll("[id='" + answer + "']" + " pre code").forEach(el => { hljs.highlightElement(el); });
+                        if (islastletter) MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+                        //if (document.querySelector("[id='" + answer + "']" + " pre code")) document.querySelectorAll("[id='" + answer + "']" + " pre code").forEach(el => { hljs.highlightElement(el); });
                         $("#" + answer + " pre code").each(function () {
                             $(this).html("<button onclick='copycode(this);' class='codebutton'>复制</button>" + $(this).html());
                         });
                         document.getElementById("article-wrapper").scrollTop = 100000;
-                    }, 20);
+                    }, 30);
                 }
                 if (event.data == "[DONE]") {
                     isalltext = true;

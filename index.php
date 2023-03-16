@@ -32,6 +32,31 @@ $type = "个人";
     <link rel="stylesheet" href="css/common.css?v1.1">
     <link rel="stylesheet" href="css/wenda.css?v1.1">
     <link rel="stylesheet" href="css/hightlight.css">
+    <script src="js/remarkable.js"></script>
+    <script src="js/jquery-3.6.4.min.js"></script>
+    <script src="js/jquery.cookie.min.js"></script>
+    <script src="js/layer.min.js"></script>
+    <script src="js/chat.js?v2.8"></script>
+    <script src="js/highlight.min.js"></script>
+    <script src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+        showProcessingMessages: false,
+        messageStyle: "none",
+        extensions: ["tex2jax.js"],
+        jax: ["input/TeX", "output/HTML-CSS"],
+        tex2jax: {
+            inlineMath:  [ ["$", "$"] ],
+        displayMath: [ ["$$","$$"] ],
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre','code','a'],
+        ignoreClass:"comment-content"
+            },
+        "HTML-CSS": {
+            availableFonts: ["STIX","TeX"],
+        showMathMenu: false
+            }
+        });
+    </script>
 </head>
 
 <body>
@@ -201,14 +226,7 @@ $type = "个人";
             </div>
         </div>
     </div>
-    <script src="js/jquery.min.js"></script>
-    <script src="js/jquery.cookie.min.js"></script>
-    <script src="js/layer.min.js"></script>
-    <script src="js/chat.js?v2.8"></script>
-    <script src="js/highlight.min.js"></script>
-    <script src="js/showdown.min.js"></script>
-    <script>
-    </script>
+
 </body>
 
 </html>
