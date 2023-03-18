@@ -1,6 +1,7 @@
 <?php
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: text/event-stream");
+header("X-Accel-Buffering: no");
 session_start();
 $postData = $_SESSION['data'];
 $_SESSION['response'] = "";
