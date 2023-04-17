@@ -87,7 +87,8 @@ https://platform.openai.com/docs/api-reference/models/list
 **对chatgpt感兴趣的同学们欢迎加群讨论。群里有很多大神，有问题可以互相帮助。如果需要在本项目基础上进行二次开发或者其他商务合作，可以加我微信沟通。**
 
 
-旧群人已满，请加新群，预计一周左右人就能瞒。
+旧群人已满，请加新群，预计一周左右人就能满。
+
 ![群二维码](https://user-images.githubusercontent.com/5563148/232360558-9f79606d-a16e-4810-8721-9ff82c858e41.png)
 
 
