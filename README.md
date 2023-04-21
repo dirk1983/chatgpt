@@ -69,7 +69,7 @@ docker run -itd -v /root/chatgpt(本地目录):/usr/share/nginx/html --name ngin
 
 7. 有没有可以注册会员的商业运营版？
 
-由于很多群友都有类似需求，我开发了一个款基于PHP+Mysql环境的商业版软件，目前还在测试中，即将正式发布。有兴趣的话您可以访问这里查看详情：https://github.com/dirk1983/chatgpt_commercial
+由于很多群友都有类似需求，我开发了一个款基于PHP+Mysql环境的商业版软件，已正式发布。有兴趣的话您可以访问这里查看详情：https://github.com/dirk1983/chatgpt_commercial
 
 ------
 
