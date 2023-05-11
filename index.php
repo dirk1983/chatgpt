@@ -1,5 +1,9 @@
 ﻿<?php
 $type = "个人";
+// 读取JSON文件
+$json = file_get_contents('config.json');
+// 解码JSON数据
+$configs = json_decode($json, true);
 //  if (substr($_SERVER["REMOTE_ADDR"],0,9)!="127.0.0.1"){
 //    if (strpos($_SERVER["HTTP_USER_AGENT"],"MicroMessenger")){
 //      echo "<div style='height:100%;width:100%;text-align:center;margin-top:30%;'><h1>请点击右上角，选择”在浏览器打开“</h1></div>";
@@ -35,6 +39,7 @@ $type = "个人";
 </head>
 
 <body>
+    <?= $configs["name"] ?>
     <div class="layout-wrap">
         <header class="layout-header">
             <div class="container" data-flex="main:justify cross:start">
@@ -50,13 +55,11 @@ $type = "个人";
             <div class="container">
                 <article class="article" id="article">
                     <div class="article-box">
-                        <div class="precast-block" data-flex="main:left">
-                            <!--
-                            <div class="input-group">
+                        <div class="precast-block" data-flex="main:left">                            
+                            <div id="keydiv" <?= $configs["personalKey"]?"style=''":"style='display:none;'"?>class="input-group">
                                 <span style="text-align: center;color:#9ca2a8">&nbsp;&nbsp;API-KEY&nbsp;&nbsp;</span>
                                 <input type="password" id="key" style="border:1px solid grey;display:block;max-width:270px;width:calc(100% - 70px);" onload="this.focus();">
                             </div>
--->
                             <div class="input-group">
                                 <span style="text-align: center;color:#9ca2a8">&nbsp;&nbsp;连续对话：</span>
                                 <input type="checkbox" id="keep" checked="" style="min-width:220px;">
