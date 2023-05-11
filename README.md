@@ -28,14 +28,21 @@ ChatGPT的横空出世真的改变了世界，用过的人都知道ChatGPT完全
 ------
 **调整部分内容为配置文件形式优化拉取代码配置信息冲突**
 拉取代码后请复制config.json_example 为 config.json
+
 linux下 进入项目目录执行 cp config.json_example config.json
 
 配置定义如下
+
 // 控制是否显示私人密钥输入框
+
 "personalKey": false,
+
 //设置全局密钥 开启私人密钥输入框后此key将不启用
+
 "key": "sk-replace_with_your_api_key_dude",
+
 //代理服务器未设置则不启用代理示例 http://127.0.0.1
+
 "proxy": "http://127.0.0.1"
 
 ------
