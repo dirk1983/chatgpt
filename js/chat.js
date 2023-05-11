@@ -163,7 +163,7 @@ $(document).ready(function () {
     });
 
     function send_post() {
-        if (($('#key').length) && ($('#key').val().length != 51)) {
+        if ($("#keydiv").attr("style").indexOf("display:none") < 0 && ($('#key').length) && ($('#key').val().length != 51)) {
             layer.msg("请输入正确的API-KEY", { icon: 5 });
             return;
         }

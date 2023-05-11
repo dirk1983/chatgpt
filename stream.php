@@ -6,11 +6,15 @@ session_start();
 $postData = $_SESSION['data'];
 $_SESSION['response'] = "";
 $ch = curl_init();
-$OPENAI_API_KEY = "sk-replace_with_your_api_key_dude";
+// 读取JSON配置文件
+$json = file_get_contents('config.json');
+// 解码JSON配置文件数据
+$configs = json_decode($json, true);
+$OPENAI_API_KEY = $configs["key"];
 if (isset($_SESSION['key'])) {
     $OPENAI_API_KEY = $_SESSION['key'];
 }
-$headers  = [
+$headers = [
     'Accept: application/json',
     'Content-Type: application/json',
     'Authorization: Bearer ' . $OPENAI_API_KEY
@@ -54,7 +58,9 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 curl_setopt($ch, CURLOPT_POST, 1);
 curl_setopt($ch, CURLOPT_POSTFIELDS, $postData);
 curl_setopt($ch, CURLOPT_WRITEFUNCTION, $callback);
-//curl_setopt($ch, CURLOPT_PROXY, "http://127.0.0.1:1081");
+if($configs["proxy"]){
+    curl_setopt($ch, CURLOPT_PROXY,  $configs["proxy"]);
+}
 
 curl_exec($ch);
 
@@ -74,7 +80,9 @@ foreach ($responsearr as $msg) {
 $questionarr = json_decode($_SESSION['data'], true);
 $filecontent = $_SERVER["REMOTE_ADDR"] . " | " . date("Y-m-d H:i:s") . "\n";
 $filecontent .= "Q:" . end($questionarr['messages'])['content'] .  "\nA:" . trim($answer) . "\n----------------\n";
-$myfile = fopen(__DIR__ . "/chat.txt", "a") or die("Writing file failed.");
-fwrite($myfile, $filecontent);
-fclose($myfile);
+
+file_put_contents(__DIR__ . "/log/" . date('Y-m-d') . "_chat.txt",$filecontent,FILE_APPEND);
+// $myfile = fopen(__DIR__ . "/chat.txt", "a") or die("Writing file failed.");
+// fwrite($myfile, $filecontent);
+// fclose($myfile);
 curl_close($ch);

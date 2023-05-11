@@ -1,0 +1,4 @@
+/log/*
+!/log/此文件夹用于存放日志文件.txt
+config.json
+favicon.ico
