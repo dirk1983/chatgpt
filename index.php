@@ -6,7 +6,7 @@ $json = file_get_contents('config.json');
 $configs = json_decode($json, true);
 $isHome = false;
 
-if(in_array($_SERVER["REMOTE_ADDR"],$configs['homeAddress'])){
+if (in_array($_SERVER["REMOTE_ADDR"], $configs['homeAddress'])) {
     $isHome = true;
 }
 if ($isHome) {
@@ -44,7 +44,6 @@ if ($isHome) {
 </head>
 
 <body>
-<?= $isHome ?>
     <div class="layout-wrap">
         <header class="layout-header">
             <div class="container" data-flex="main:justify cross:start">
