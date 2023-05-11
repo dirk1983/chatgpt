@@ -58,7 +58,7 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 curl_setopt($ch, CURLOPT_POST, 1);
 curl_setopt($ch, CURLOPT_POSTFIELDS, $postData);
 curl_setopt($ch, CURLOPT_WRITEFUNCTION, $callback);
-if($configs["proxy"]){
+if ($configs["proxy"]) {
     curl_setopt($ch, CURLOPT_PROXY,  $configs["proxy"]);
 }
 
@@ -81,7 +81,7 @@ $questionarr = json_decode($_SESSION['data'], true);
 $filecontent = $_SERVER["REMOTE_ADDR"] . " | " . date("Y-m-d H:i:s") . "\n";
 $filecontent .= "Q:" . end($questionarr['messages'])['content'] .  "\nA:" . trim($answer) . "\n----------------\n";
 
-file_put_contents(__DIR__ . "/log/" . date('Y-m-d') . "_chat.txt",$filecontent,FILE_APPEND);
+file_put_contents(__DIR__ . "/log/" . date('Y-m-d') . "_chat.txt", $filecontent, FILE_APPEND);
 // $myfile = fopen(__DIR__ . "/chat.txt", "a") or die("Writing file failed.");
 // fwrite($myfile, $filecontent);
 // fclose($myfile);

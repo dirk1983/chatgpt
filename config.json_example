@@ -1,6 +1,11 @@
 {
-    "homeAddress":[]:,
     "personalKey": false,
     "key": "sk-replace_with_your_api_key_dude",
-    "proxy": ""
+    "proxy": "",
+    "homeAddress": [
+        "127.0.0.1"
+    ],
+    "userList": {
+        "admin": "admin"
+    }
 }
