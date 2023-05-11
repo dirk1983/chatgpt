@@ -1,15 +1,11 @@
 ﻿<?php
 $type = "个人";
 // 读取JSON文件
-$json = file_get_contents('config.json');
+$json = file_get_contents('./config.json');
 // 解码JSON数据
 $configs = json_decode($json, true);
-$isHome = false;
 
 if (in_array($_SERVER["REMOTE_ADDR"], $configs['homeAddress'])) {
-    $isHome = true;
-}
-if ($isHome) {
     $type = "内部";
 } else {
     if (strpos($_SERVER["HTTP_USER_AGENT"], "MicroMessenger")) {

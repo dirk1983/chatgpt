@@ -27,9 +27,9 @@ ChatGPT的横空出世真的改变了世界，用过的人都知道ChatGPT完全
 
 ------
 **调整部分内容为配置文件形式优化拉取代码配置信息冲突**
-拉取代码后请复制config.json_example 为 config.json
+拉取代码后请复制config_example.json 为 config.json
 
-linux下 进入项目目录执行 cp config.json_example config.json
+linux下 进入项目目录执行 cp config_example.json config.json
 
 配置定义如下
 
