@@ -181,6 +181,23 @@ $(document).ready(function () {
             time: false //取消自动关闭
         });
 
+        function draw() {
+            $.get("getpicture.php", function (data) {
+                layer.close(loading);
+                layer.msg("处理成功！");
+                answer = randomString(16);
+                $("#article-wrapper").append('<li class="article-title" id="q' + answer + '"><pre></pre></li>');
+                for (var j = 0; j < prompt.length; j++) {
+                    $("#q" + answer).children('pre').text($("#q" + answer).children('pre').text() + prompt[j]);
+                }
+                $("#article-wrapper").append('<li class="article-content" id="' + answer + '"><img onload="document.getElementById(\'article-wrapper\').scrollTop=100000;" src="pictureproxy.php?url=' + encodeURIComponent(data.data[0].url) + '"></li>');
+                $("#kw-target").val("");
+                $("#kw-target").attr("disabled", false);
+                autoresize();
+                $("#ai-btn").html('<i class="iconfont icon-wuguan"></i>发送');
+                if (!isMobile()) $("#kw-target").focus();
+            }, "json");
+        }
         function streaming() {
             var es = new EventSource("stream.php");
             var isstarted = true;
@@ -307,20 +324,37 @@ $(document).ready(function () {
         }
 
 
-        $.ajax({
-            cache: true,
-            type: "POST",
-            url: "setsession.php",
-            data: {
-                message: prompt,
-                context: (!($("#keep").length) || ($("#keep").prop("checked"))) ? JSON.stringify(contextarray) : '[]',
-                key: ($("#key").length) ? ($("#key").val()) : '',
-            },
-            dataType: "json",
-            success: function (results) {
-                streaming();
-            }
-        });
+        if (prompt.charAt(0) === '画') {
+            $.ajax({
+                cache: true,
+                type: "POST",
+                url: "setsession.php",
+                data: {
+                    message: prompt,
+                    context: '[]',
+                    key: ($("#key").length) ? ($("#key").val()) : '',
+                },
+                dataType: "json",
+                success: function (results) {
+                    draw();
+                }
+            });
+        } else {
+            $.ajax({
+                cache: true,
+                type: "POST",
+                url: "setsession.php",
+                data: {
+                    message: prompt,
+                    context: (!($("#keep").length) || ($("#keep").prop("checked"))) ? JSON.stringify(contextarray) : '[]',
+                    key: ($("#key").length) ? ($("#key").val()) : '',
+                },
+                dataType: "json",
+                success: function (results) {
+                    streaming();
+                }
+            });
+        }
 
 
     }
