@@ -18,7 +18,7 @@ ChatGPT的横空出世真的改变了世界，用过的人都知道ChatGPT完全
 6. 支持一些预设话术，支持上下文连续对话，AI回答途中可以随时打断。
 7. 支持错误处理，OpenAI接口返回错误时可以看到具体原因。
 8. 可以实现区分内外网IP，内网直接访问，外网通过BASIC认证后可访问。
-9. 可以实现输入API_KEY使用，方便分享给网友或朋友使用。
+9. 可以实现页面输入自定义API_KEY使用，方便分享给网友或朋友使用。
 10. 服务器自动记录所有访问者的对话日志和IP地址，方便管理员查询。
 11. 支持API_KEY自动轮询，解决5美元账户每分钟限制查询3次的问题。
 12. 支持调用OpenAI官方接口画图，提问的第一个字是“画”即可生成图片。
@@ -29,6 +29,7 @@ ChatGPT的横空出世真的改变了世界，用过的人都知道ChatGPT完全
 # 测试网址：http://mm1.ltd
 ![t1](https://user-images.githubusercontent.com/5563148/232330560-1b6a45f3-fcc1-4d3e-a2f7-b1c9878fe9cd.jpg)
 ![t2](https://user-images.githubusercontent.com/5563148/232330566-c6ea7fb3-474f-45e4-adda-37f3db27b92a.jpg)
+![t3](https://github.com/dirk1983/chatgpt/assets/5563148/732b5bed-7e9c-4c07-9865-9b97957781a7)
 
 
 ------
