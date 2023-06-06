@@ -262,13 +262,17 @@ $(document).ready(function () {
                         let newalltext = alltext;
                         let islastletter = false;
                         //有时服务器错误地返回\\n作为换行符，尤其是包含上下文的提问时，这行代码可以处理一下。
-                        if (newalltext.split("\n\n").length == newalltext.split("\n").length) {
+                        if (newalltext.split("\n").length == 1) {
                             newalltext = newalltext.replace(/\\n/g, '\n');
                         }
-                        if (str_.length < newalltext.length) {
+                        if (str_.length < (newalltext.length - 3)) {
                             str_ += newalltext[i++];
-                            strforcode = str_ + "_";
-                            if ((str_.split("```").length % 2) == 0) strforcode += "\n```\n";
+                            strforcode = str_;
+                            if ((str_.split("```").length % 2) == 0) {
+                                strforcode += "\n```\n";
+                            } else {
+                                strforcode += "_";
+                            }
                         } else {
                             if (isalltext) {
                                 clearInterval(timer);

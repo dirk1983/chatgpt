@@ -16,8 +16,8 @@ if (mb_substr($_POST["message"], 0, 1, 'UTF-8') === '画') {
     if (!empty($context)) {
         $context = array_slice($context, -5);
         foreach ($context as $message) {
-            $postData['messages'][] = ['role' => 'user', 'content' => str_replace("\n", "\\n", $message[0])];
-            $postData['messages'][] = ['role' => 'assistant', 'content' => str_replace("\n", "\\n", $message[1])];
+            $postData['messages'][] = ['role' => 'user', 'content' => $message[0]];
+            $postData['messages'][] = ['role' => 'assistant', 'content' => $message[1]];
         }
     }
     $postData['messages'][] = ['role' => 'user', 'content' => $_POST['message']];
