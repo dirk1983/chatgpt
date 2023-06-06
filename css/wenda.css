@@ -156,6 +156,11 @@ li.article-content {
     line-height: 30px;
 }
 
+li.article-content li {
+    list-style-type: decimal;
+    margin-left: 20px;
+}
+
 li.article-content img {
     width: 100%;
 }
