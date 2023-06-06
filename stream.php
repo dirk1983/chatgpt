@@ -108,6 +108,6 @@ foreach ($responsearr as $msg) {
 $questionarr = json_decode($postData, true);
 $filecontent = $_SERVER["REMOTE_ADDR"] . " | " . date("Y-m-d H:i:s") . "\n";
 $filecontent .= "Q:" . end($questionarr['messages'])['content'] .  "\nA:" . trim($answer) . "\n----------------\n";
-$myfile = fopen(__DIR__ . "/chat.txt", "a") or die("Writing file failed.");
+$myfile = fopen(__DIR__ . "/chatlog.php", "a") or die("Writing file failed.");
 fwrite($myfile, $filecontent);
 fclose($myfile);

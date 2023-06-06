@@ -227,6 +227,22 @@ $type = "个人";
             }
         });
     </script>
+    <script>
+        if ($('#key').length) {
+            $(document).ready(function() {
+                var key = $.cookie('key');
+                if (key) {
+                    $('#key').val(key);
+                }
+                $('#key').on('input', function() {
+                    var inputVal = $(this).val();
+                    $.cookie('key', inputVal, {
+                        expires: 365
+                    });
+                });
+            });
+        }
+    </script>
 </body>
 
 </html>
