@@ -265,7 +265,7 @@ $(document).ready(function () {
                         if (newalltext.split("\n").length == 1) {
                             newalltext = newalltext.replace(/\\n/g, '\n');
                         }
-                        if (str_.length < (newalltext.length - 3)) {
+                        if (str_.length < (newalltext.length)) {
                             str_ += newalltext[i++];
                             strforcode = str_;
                             if ((str_.split("```").length % 2) == 0) {
