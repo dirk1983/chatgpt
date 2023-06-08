@@ -276,7 +276,7 @@ $(document).ready(function () {
                         } else {
                             if (isalltext) {
                                 clearInterval(timer);
-                                strforcode = str_;
+                                strforcode = newalltext;
                                 islastletter = true;
                                 $("#kw-target").val("");
                                 $("#kw-target").attr("disabled", false);
