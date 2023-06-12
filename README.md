@@ -104,3 +104,5 @@ https://platform.openai.com/docs/api-reference/models/list
 
 最后，我还做了个在微信个人订阅号中通过调用OpenAI最新接口和gpt-3.5-turbo模型实现ChatGPT聊天机器人的功能，已开源，需要的朋友也可以拿去。
 https://github.com/dirk1983/chatgpt-wechat-personal
+
+[![Star History Chart](https://api.star-history.com/svg?repos=dirk1983/chatgpt&type=Date)](https://star-history.com/#dirk1983/chatgpt&Date)
