@@ -258,6 +258,7 @@ $(document).ready(function () {
                     $("#article-wrapper").append('<li class="article-content" id="' + answer + '"></li>');
                     let str_ = '';
                     let i = 0;
+                    let strforcode = '';
                     timer = setInterval(() => {
                         let newalltext = alltext;
                         let islastletter = false;
