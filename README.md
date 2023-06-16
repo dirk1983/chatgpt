@@ -93,9 +93,11 @@ https://platform.openai.com/docs/api-reference/models/list
 ------
 **对chatgpt感兴趣的同学们欢迎加群讨论。群里有很多大神，有问题可以互相帮助。**
 
-旧群已满，请加新群。
+由于群里人数已超过200，无法直接扫码进群，想进群的朋友可以加热心网友小号，由他帮忙拉进群。
 
-![微信截图_20230604114149](https://github.com/dirk1983/chatgpt/assets/5563148/99ca8f9c-46ed-44a8-9f49-75fbf3b66b44)
+![微信截图_20230306154434](https://user-images.githubusercontent.com/5563148/223048985-4cac05cb-acf0-4f04-aad5-1c3dcec609d0.png)
+
+
 
 
 有热心网友建议我放个打赏码，各位如果真的想表达感谢，小额即可。
