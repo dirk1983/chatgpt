@@ -376,3 +376,24 @@ $(document).ready(function () {
     }
 
 });
+// 现有的JavaScript代码
+// 你的JavaScript代码
+
+// 新添加的文件上传处理
+$('#submit-button').on('click', function() {
+    var file = $('#upload-file')[0].files[0];  // 获取用户选择的文件
+    var formData = new FormData();  // 创建一个新的FormData对象
+    formData.append('file', file);  // 将文件添加到FormData对象中
+
+    $.ajax({  // 发送一个新的请求到服务器
+        url: 'upload.php',  // 服务器上用于处理上传的文件的PHP脚本的URL
+        type: 'POST',  // 请求的类型
+        data: formData,  // 发送的数据
+        processData: false,  // 告诉jQuery不要处理数据
+        contentType: false,  // 告诉jQuery不要设置contentType
+        success: function(data) {  // 当请求成功时的回调函数
+            console.log('上传成功!');
+            // 你可以在这里添加对响应数据的处理，比如更新UI，提示用户等
+        }
+    });
+});
