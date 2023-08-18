@@ -95,7 +95,7 @@ https://platform.openai.com/docs/api-reference/models/list
 
 这是第十个群，刚建立，人数比较少，如果其他群有位置我会把大家拉进去，或者耐心等待其他网友加入。
 
-![image](https://github.com/dirk1983/chatgpt/assets/5563148/868d2202-854b-4fc5-a6ba-daaf7e40baeb)
+![image](https://github.com/dirk1983/chatgpt/assets/5563148/0f362036-77a5-4d22-8e6f-fd61cfdb3ac9)
 
 
 
