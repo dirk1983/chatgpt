@@ -93,9 +93,8 @@ https://platform.openai.com/docs/api-reference/models/list
 ------
 **对chatgpt感兴趣的同学们欢迎加群讨论。群里有很多大神，有问题可以互相帮助。**
 
-这是第十个群，刚建立，人数比较少，如果其他群有位置我会把大家拉进去，或者耐心等待其他网友加入。
+![image](https://github.com/dirk1983/chatgpt/assets/5563148/8059e89b-0264-45c9-a04a-0aea67de0429)
 
-![image](https://github.com/dirk1983/chatgpt/assets/5563148/1e06fa30-6b03-4d8b-bf1c-f2b6aad6cc20)
 
 
 
