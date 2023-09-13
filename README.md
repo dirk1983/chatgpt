@@ -93,8 +93,7 @@ https://platform.openai.com/docs/api-reference/models/list
 ------
 **对chatgpt感兴趣的同学们欢迎加群讨论。群里有很多大神，有问题可以互相帮助。**
 
-![image](https://github.com/dirk1983/chatgpt/assets/5563148/8059e89b-0264-45c9-a04a-0aea67de0429)
-
+![image](https://github.com/dirk1983/chatgpt/assets/5563148/fcf0b0ce-6ed6-4962-9363-a4dfb4efad60)
 
 
 
