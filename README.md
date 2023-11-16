@@ -3,7 +3,7 @@
 
 **2023-11-16特别提醒**
 
-今日OpenAI的API接口地址将很多IP屏蔽，包括一些香港IP和CloudFlare的IP，因此，之前用cf worker搭建反代地址的方案已不可用。大家可以用没被封锁的海外服务器部署服务，或者在这个服务器上搭建反代，然后在国内访问这个反代地址。用宝塔搭建反代的方案可以参考这篇文章：https://blog.csdn.net/weixin_43227851/article/details/133440520
+提醒在国内使用反代访问chatgpt接口的网友：今日OpenAI的API接口地址将很多IP屏蔽，包括一些香港IP和CloudFlare的IP，因此，之前用cf worker搭建反代地址的方案已不可用。大家可以用没被封锁的海外服务器部署服务，或者在这个服务器上搭建反代，然后在国内访问这个反代地址。用宝塔搭建反代的方案可以参考这篇文章：https://blog.csdn.net/weixin_43227851/article/details/133440520
 
 **写在最前：**
 
