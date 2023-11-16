@@ -3,7 +3,7 @@
 
 **2023-11-16特别提醒**
 
-提醒在国内使用反代访问chatgpt接口的网友：今日OpenAI的API接口地址将很多IP屏蔽，包括一些香港IP和CloudFlare的IP，因此，之前用cf worker搭建反代地址的方案已不可用。大家可以用没被封锁的海外服务器部署服务，或者在这个服务器上搭建反代，然后在国内访问这个反代地址。用宝塔搭建反代的方案可以参考这篇文章：https://blog.csdn.net/weixin_43227851/article/details/133440520
+今日OpenAI的API接口地址将很多IP屏蔽，包括一些香港IP和CloudFlare的IP。因此，在国内服务器上使用cf worker搭建反代地址的方案已不可用。大家可以用没被封锁的海外服务器部署项目，或者在这个服务器上搭建反代，然后在国内访问这个反代地址。用宝塔搭建反代的方案可以参考这篇文章：https://blog.csdn.net/weixin_43227851/article/details/133440520
 
 **写在最前：**
 
@@ -58,7 +58,7 @@ c. 使用反向代理服务，将OpenAI接口地址反代到某个网址，把�
 
 以下方案自2023-11-16起已失效：
 
-如果没有海外服务器，可以用cf worker免费建一个，前提是你要有一个域名，几块钱就能注册一个。搭建自己的cf worker教程在这里：https://github.com/noobnooc/noobnooc/discussions/9 。如果你连域名也不想注册，也可以用别人现成的反代地址，比如下面这个：https://openai.1rmb.tk/v1/chat/completions 。地址是群友提供的，不确定什么时候失效，用的人比较多时可能会有点卡，大家也可以进群求一个。
+~~如果没有海外服务器，可以用cf worker免费建一个，前提是你要有一个域名，几块钱就能注册一个。搭建自己的cf worker教程在这里：https://github.com/noobnooc/noobnooc/discussions/9 。如果你连域名也不想注册，也可以用别人现成的反代地址，比如下面这个：https://openai.1rmb.tk/v1/chat/completions 。地址是群友提供的，不确定什么时候失效，用的人比较多时可能会有点卡，大家也可以进群求一个。~~
 
 3. 关于Stream流模式的原理，为什么你部署的不像我的那么快
 
