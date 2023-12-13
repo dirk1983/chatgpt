@@ -97,7 +97,7 @@ https://platform.openai.com/docs/api-reference/models/list
 ------
 **对chatgpt感兴趣的同学们欢迎加群讨论。我已建了10个微信群，群公告里有近5000群友中所有卖家提供的各种服务网址，有任何和AI有关的需求都可以找到相关的产品。群里也有很多大神，有问题可以互相帮助。**
 
-![微信截图_20231206121631](https://github.com/dirk1983/chatgpt/assets/5563148/b79be85f-a1bd-4469-be4c-78137f0cf459)
+![微信截图_20231213160029](https://github.com/dirk1983/chatgpt/assets/5563148/07e45244-cdac-4233-a83f-e4e51960cd68)
 
 
 有热心网友建议我放个打赏码，各位如果真的想表达感谢，小额即可。
