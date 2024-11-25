@@ -208,7 +208,7 @@ $type = "个人";
     <script src="js/layer.min.js"></script>
     <script src="js/chat.js?v2.8"></script>
     <script src="js/highlight.min.js"></script>
-    <script src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/x-mathjax-config">
         MathJax.Hub.Config({
         showProcessingMessages: false,
