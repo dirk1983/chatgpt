@@ -1,8 +1,8 @@
-# chatgpt
+# AI大模型
 
 **写在最前：**
 
-ChatGPT的横空出世真的改变了世界，用过的人都知道ChatGPT完全可以作为生产力工具应用在很多领域。可以说ChatGPT是最近几年又一个的巨大风口，目前大量投资机构和政府部门都在鼓励和支持相关行业的发展。如果您也有使用ChatGPT赚钱或创业的想法，欢迎免费进群讨论，二维码在本文最后。群里有很多志同道合的朋友一起分享资讯，分享知识，对接资源。另外请点下右上角的小星星，方便您随时找到本项目。
+AI大模型的横空出世真的改变了世界，用过的人都知道AI大模型完全可以作为生产力工具应用在很多领域。可以说AI大模型是最近几年又一个的巨大风口，目前大量投资机构和政府部门都在鼓励和支持相关行业的发展。如果您也有使用AI大模型赚钱或创业的想法，欢迎免费进群讨论，二维码在本文最后。群里有很多志同道合的朋友一起分享资讯，分享知识，对接资源。另外请点下右上角的小星星，方便您随时找到本项目。
 
 **首次使用配置：**
 
@@ -72,7 +72,7 @@ docker pull gindex/nginx-php
 docker run -itd -v /root/chatgpt(本地目录):/usr/share/nginx/html --name nginx-php -p 8080(主机端口):80 --restart=always gindex/nginx-php
 ```
 
-还有另一位热心网友基于本项目在github上的docker版chatgpt，网址：https://github.com/hsmbs/chatgpt-php ，也可以用。
+还有另一位热心网友基于本项目在github上的docker版AI大模型，网址：https://github.com/hsmbs/chatgpt-php ，也可以用。
 
 6. 是否支持Windows客户端？
 
@@ -95,7 +95,7 @@ https://platform.openai.com/docs/guides/chat/introduction
 https://platform.openai.com/docs/api-reference/models/list
 
 ------
-**对chatgpt感兴趣的同学们欢迎加群讨论。我已建了10个微信群，群公告里有近5000群友中所有卖家提供的各种服务网址，有任何和AI有关的需求都可以找到相关的产品。群里也有很多大神，有问题可以互相帮助。**
+**对AI大模型感兴趣的同学们欢迎加群讨论。我已建了10个微信群，群公告里有近5000群友中所有卖家提供的各种服务网址，有任何和AI有关的需求都可以找到相关的产品。群里也有很多大神，有问题可以互相帮助。**
 
 由于目前最新的群里超过200人，请加我小号拉进群。
 
@@ -106,7 +106,7 @@ https://platform.openai.com/docs/api-reference/models/list
 
 ![打赏码](https://user-images.githubusercontent.com/5563148/222968018-9def451a-bbce-4a7e-bde6-edecc7ced40f.jpg)
 
-最后，我还做了个在微信个人订阅号中通过调用OpenAI最新接口和gpt-3.5-turbo模型实现ChatGPT聊天机器人的功能，已开源，需要的朋友也可以拿去。
+最后，我还做了个在微信个人订阅号中通过调用OpenAI最新接口和gpt-3.5-turbo模型实现AI大模型聊天机器人的功能，已开源，需要的朋友也可以拿去。
 https://github.com/dirk1983/chatgpt-wechat-personal
 
 ## Star History
