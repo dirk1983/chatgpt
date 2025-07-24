@@ -114,5 +114,5 @@ https://github.com/dirk1983/ai-wechat-personal
 
 ## Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=dirk1983/chatgpt&type=Date)](https://star-history.com/#dirk1983/chatgpt&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=dirk1983/deepseek&type=Date)](https://star-history.com/#dirk1983/deepseek&Date)
 
