@@ -101,13 +101,12 @@ https://platform.openai.com/docs/api-reference/models/list
 
 ![微信截图_20230306154434](https://user-images.githubusercontent.com/5563148/223048985-4cac05cb-acf0-4f04-aad5-1c3dcec609d0.png)
 
-
-有热心网友建议我放个打赏码，各位如果真的想表达感谢，小额即可。
-
-![打赏码](https://user-images.githubusercontent.com/5563148/222968018-9def451a-bbce-4a7e-bde6-edecc7ced40f.jpg)
-
-最后，我还做了个在微信个人订阅号中通过调用OpenAI最新接口和gpt-3.5-turbo模型实现AI大模型聊天机器人的功能，已开源，需要的朋友也可以拿去。
+最后，我还做了个在微信个人订阅号中通过调用第三方接口实现AI大模型聊天机器人的功能，已开源，需要的朋友也可以拿去。
 https://github.com/dirk1983/ai-wechat-personal
+
+**声明**
+本项目遵循 <a href='https://github.com/dirk1983/deepseek/blob/main/LICENSE'>MIT开源协议</a>，仅用于技术研究和学习，使用本项目时需遵守所在地法律法规、相关政策以及企业章程，禁止用于任何违法或侵犯他人权益的行为。任何个人、团队和企业，无论以何种方式使用该项目、对何对象提供服务，所产生的一切后果，本项目均不承担任何责任
+境内使用该项目时，建议使用国内厂商的大模型服务，并进行必要的内容安全审核及过滤
 
 ## Star History
 
